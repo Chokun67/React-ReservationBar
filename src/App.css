@@ -1,0 +1,73 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow: auto; /* เพื่อป้องกันการแสดงแถบเลื่อนเมื่อภาพใหญ่เกินขนาดหน้าจอ */
+  font-family: Equinox;
+}
+
+/* Background.css */
+.full-screen-bg {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-image: url('assets/image/mainbg.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.overlay {
+  display: flex;
+  flex-direction: column;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  
+}
+.boxcover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.content {
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+  text-align: center; /* จัดข้อความให้อยู่ตรงกลางแนวนอน */
+  color: white; /* สีข้อความ */
+  padding: 20px; /* ระยะห่างของเนื้อหา */
+}
+
+.pane2 {
+  display: flex; /* ใช้ Flexbox เพื่อแบ่งส่วน */
+  justify-content: space-between; /* แบ่งส่วนแบบ space-between เพื่อให้ซ้าย 30% และขวา 70% */
+  height: 100vh; /* ให้สูงเท่ากับความสูงของหน้าจอ */
+  background-image: linear-gradient(to top right,#09133B 30%,#a53fa5 ,#fa43f9 );
+}
+
+.left-pane {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+
+.left-pane h1{
+  margin: 20vh 0 0 20vh;
+  font-size: 4rem;
+}
+
+.left-pane a{
+  color: white;
+  font-size: 40px;
+  margin: 10px 0 0 20vh;
+}
+
+.right-pane {
+  width: 70%;
+}
