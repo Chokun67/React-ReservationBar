@@ -1,0 +1,25 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.flex-container {
+    display: flex;
+    height: 100vh;
+    width: 100vi;
+}
+
+.left-half {
+    position: relative;
+    flex:1;
+    background-image: url('../image/bglogin.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.right-half {
+    flex:1;
+    background-color: #665151; /* สีพื้นหลังครึ่งขวา */
+    /* เพิ่มสไตล์อื่น ๆ ตามต้องการ */
+    
+}

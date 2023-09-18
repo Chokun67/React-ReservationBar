@@ -4,6 +4,7 @@ header {
     top :0;
     left:0;
     width: 100%;
+    z-index: 11111;
   }
   
   nav {
@@ -43,7 +44,7 @@ header {
     color: white;
   }
 
-  .auth-buttons button  {
+  .auth-buttons div  {
     background: linear-gradient(#5b4a5a, #7a6d79) padding-box,
     linear-gradient(to right, #3C79D4,#FFA6FA) border-box;
     border-radius: 6px;
@@ -55,8 +56,12 @@ header {
   font-family: inherit;
   }
 
+  .auth-buttons div a{
+      text-decoration: none;
+      color: white;
+   
+  }
 
-  
   .auth-buttons {
     display: flex;
     gap: 10px;

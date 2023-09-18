@@ -1,6 +1,7 @@
 import React from "react";
 import "../assets/style/navi.css";
 import logo from '../assets/image/logo.png';
+import { Link } from 'react-router-dom';
 
 function navi() {
   return (
@@ -12,18 +13,22 @@ function navi() {
           </div>
           <ul>
             <li>
-              <a href="#">RESERVE</a>
+              <Link to="/login">RESERVE</Link>
             </li>
             <li>
-              <a href="#">MUSIC</a>
+              <Link to="/login">MUSIC</Link>
             </li>
             <li>
-              <a href="#">USER</a>
+              <Link to="/register">USER</Link>
             </li>
           </ul>
           <div className="auth-buttons">
-            <button className="border-gradient border-gradient-purple radius">Login</button>
-            <button className="border-gradient border-gradient-purple radius">Register</button>
+            <div className="border-gradient border-gradient-purple radius">
+            <Link to="/login">Login</Link>
+            </div>
+            <div className="border-gradient border-gradient-purple radius">
+            <Link to="/register">Register</Link>
+            </div>
           </div>
         </nav>
       </header>
