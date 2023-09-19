@@ -18,7 +18,7 @@ body {
 
 
 .login-container {
-    width: 60%;
+    width: 70%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -71,6 +71,10 @@ body {
     border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
 .login-button:hover,
@@ -113,7 +117,7 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
-    filter: blur(5px); /* ปรับระดับของเบลอตามต้องการ */
+    filter: blur(4px); /* ปรับระดับของเบลอตามต้องการ */
     z-index: -1; /* ให้แผ่นสีเบลออยู่หน้ารูปภาพ */
 }
 
@@ -129,17 +133,24 @@ body {
     margin-right: 10px; /* ระยะห่างระหว่าง Logo กับข้อความ (ถ้ามี) */
   }
 
+  Link{
+    width: 100%;
+  }
+
   .go-register{
     background-color: rgba(192, 192, 192, 0.3);
     color: #fff;
-    border: none;
-    padding: 10px 15px;
     cursor: pointer;
     font-weight: bold;
-    width: 100%;
+    width: 30vw;
     border: 2px solid white; /* ขอบสีขาว */
     border-radius: 15px; /* รัศมีขอบ */
+    text-align: center;
 }
+
+ .go-register p{
+    margin: 5px auto;
+ }
 
 
 

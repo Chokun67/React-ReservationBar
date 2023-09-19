@@ -8,18 +8,116 @@ body {
     height: 100vh;
     width: 100vi;
 }
+.login-container {
+    width: 70%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 
-.left-half {
+.re-left-half {
     position: relative;
     flex:1;
-    background-image: url('../image/bglogin.png');
-    background-size: cover;
-    background-position: center;
+    display: flex;
+    justify-content: center;
+    color: #fff;
 }
 
-.right-half {
-    flex:1;
-    background-color: #665151; /* สีพื้นหลังครึ่งขวา */
-    /* เพิ่มสไตล์อื่น ๆ ตามต้องการ */
-    
+.re-left-half::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../image/bglogin.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    filter: blur(4px); 
+    z-index: -1; 
 }
+
+.logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo img {
+    width: 100%;
+    max-width: 180px; 
+    min-width: 100px;
+    margin-right: 10px; 
+  }
+
+  Link{
+    width: 100%;
+  }
+
+  .go-register{
+    background-color: rgba(192, 192, 192, 0.3);
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+    width: 30vw;
+    border: 2px solid white; /* ขอบสีขาว */
+    border-radius: 15px; /* รัศมีขอบ */
+    text-align: center;
+}
+
+ .go-register p{
+    margin: 5px auto;
+ }
+
+.re-right-half {
+    flex:1;
+    background-color: #ffffff; /* สีพื้นหลังครึ่งขวา */
+    display: flex;
+    justify-content: center;
+}
+  
+  /* CSS for form labels */
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+  
+  /* CSS for form inputs */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="tel"],
+  input[type="date"] {
+    width: 100%;
+    padding: 8px;
+    background-color: #D9D9D9;
+    margin-bottom: 15px;
+    border: 1px solid #D2D2D2;
+    border-radius: 4px;
+    display: flex;
+  }
+  
+  .name-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .telephone-birthday-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .name-container div{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+  }
+
+  .icon-google{
+    font-size: 1.5em ;
+    margin-right: 5px;
+  }
+  
