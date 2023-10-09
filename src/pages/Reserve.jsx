@@ -1,31 +1,70 @@
-import React from 'react'
-import "../App.css";
+import React, { useState, useEffect } from "react";
 import Navi from "../components/navi.jsx";
+import "../assets/style/reserve.css";
 
 function Reserve() {
+    const [selectedDate, setSelectedDate] = useState(''); // สถานะเพื่อเก็บวันที่ที่เลือก
+    const [dateOptions, setDateOptions] = useState([]); // สถานะเพื่อเก็บรายการวันที่
+  
+    // สร้างรายการวันที่ตั้งแต่วันที่ 10/10/2023 ไปอีก 7 วัน
+    useEffect(() => {
+      const startDate = new Date('2023-10-10');
+      const options = [];
+      for (let i = 0; i < 7; i++) {
+        const date = new Date(startDate);
+        date.setDate(startDate.getDate() + i);
+        const formattedDate = date.toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: '2-digit',
+          day: '2-digit',
+        });
+        options.push(formattedDate);
+      }
+      setDateOptions(options);
+      setSelectedDate(options[0]); // เลือกวันที่แรกเป็นค่าเริ่มต้น
+    }, []);
+  
+    // รีเnder รายการวันที่ใน dropdown
+    const dateItems = dateOptions.map((date, index) => (
+      <option key={index} value={date}>
+        {date}
+      </option>
+    ));
+
   return (
     <>
-        <div className="full-screen-bg">
-            <div className="overlay">
-            <Navi />
-          <div className="boxcover">            
-            <div className="content2">
-              <h1>WELCOME</h1>
-              <p>
-                ร็อคพลาซ่า คอมเมนต์ดั๊มพ์โอเลี้ยงสตาร์ท แอ็คชั่นฮีโร่จ๊อกกี้
-                แอร์นินจาแทงกั๊กคอนโทรล ออกแบบคาร์โก้สมิติเวชป๋า
-                มินต์บ๊อบสะบึมส์ บูติกดีเจบร็อกโคลีแก๊สโซฮอล์จตุคาม แอปเปิ้ล
-                ฟอยล์ทาวน์ มอนสเตอร์เอ๊าะแต๋ว คองเกรสฮัลโลวีนอพาร์ทเมนท์สเตย์
-                ทำงานแฟร์ไรเฟิลภารตะเซ่นไหว้ กฤษณ์บึ้มเก๋ากี้รันเวย์
-                ธรรมาแคร์แทงโก้อุด้งพลานุภาพ ฟินิกซ์แฟกซ์
-                แพลนแครกเกอร์ซูเอี๋ยภคันทลาพาธ
-              </p>
+      <div className="full-screen-bg">
+        <div className="overlay">
+          <Navi />
+          <div className="boxreserve">
+            <div className="content">
+              <h1>Reguration</h1>
+              <ul className="howto">
+                <li>1.วอเตอร์ธัมโมเวสต์รันเวย์วีเจแป๋ว</li>
+                <li>2.ราชานุญาตคาปูชิโนสคริปต์ฮ่องเต้ซูเอี๋ย</li>
+                <li>3.มือถือเรซิ่นโปรเจ็คแม็กกาซีน</li>
+                <li>4.วาทกรรมแฮปปี้ยนตรกรรมด็อกเตอร์</li>
+              </ul>
+              <h2>PICK A DATE</h2>
+
+              <div>
+                <select className="dddate"
+                  value={selectedDate}
+                  onChange={(e) => setSelectedDate(e.target.value)}
+                >
+                  {dateItems}
+                </select>
+                {selectedDate && <p>คุณเลือกวันที่: {selectedDate}</p>}
+              </div>
+              <button type="submit" className="date-button">
+                Rerservation
+              </button>
             </div>
           </div>
-            </div>
         </div>
+      </div>
     </>
-  )
+  );
 }
 
-export default Reserve
+export default Reserve;

@@ -1,0 +1,46 @@
+.boxreserve {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    top: 0;
+    left: 0;
+    width: 100vw;
+  }
+
+.howto{
+    display: flex;
+  flex-direction: column; /* เรียงแนวตั้ง */
+  list-style-type: none; /* ลบขีดเส้นหัวข้อรายการ */
+  align-items: flex-start;
+}
+
+.howto li{
+    margin: 5px 0;
+}
+
+.date-button{
+    background-image: linear-gradient(to bottom right,#B6116B 30%,#3B1578);
+    color: #fff;
+    
+    border: none;
+    padding: 20px 70px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: medium;
+}
+.dddate{
+    background-color: white;
+    border: none;
+    padding: 15px 60px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: medium;
+    border: 15px solid #F5F5F5;
+}
