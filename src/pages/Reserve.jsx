@@ -1,25 +1,14 @@
-import React,{ useState } from "react";
+import React from 'react'
 import "../App.css";
 import Navi from "../components/navi.jsx";
-import Corousel from "../components/corousel";
-import Footer from "../components/footer";
-import logomain from "../assets/image/pic.png";
 
-function Home() {
-  const [count, setCount] = useState(0);
-
+function Reserve() {
   return (
     <>
-      <div className="full-screen-bg">
-        <div className="overlay">
-          <Navi />
-          <div className="boxcover">
-            <div className="content">
-              <div className="storepic">
-                <img src={logomain} alt="Your Logo" />
-              </div>
-            </div>
-            <div className="welcome">
+        <div className="full-screen-bg">
+            <div className="overlay">
+            <Navi />
+          <div className="boxcover">            
             <div className="content2">
               <h1>WELCOME</h1>
               <p>
@@ -32,23 +21,11 @@ function Home() {
                 แพลนแครกเกอร์ซูเอี๋ยภคันทลาพาธ
               </p>
             </div>
-            </div>
           </div>
+            </div>
         </div>
-      </div>
-      <div className="pane2">
-        <div className="left-pane">
-          <h1>FEATURES</h1>
-          <a>จองโต้ะ</a>
-          <a>ขอเพลง</a>
-        </div>
-        <div className="right-pane">
-          <Corousel />
-        </div>
-      </div>
-      <Footer />
     </>
-  );
+  )
 }
 
-export default Home;
+export default Reserve

@@ -1,11 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
+// import App from './App.jsx'
 import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Home from './pages/Home.jsx'
 import Signin from './pages/login.jsx'
-import Signup from './pages/Register.jsx' 
+import Signup from './pages/Register.jsx'
+import Reserve from './pages/Reserve.jsx' 
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
   {
     path: "register",
     element: <Signup/>
+  },
+  {
+    path: "reserve",
+    element: <Reserve/>
   }
 ]
 );

@@ -7,7 +7,7 @@ function Signup() {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
-    email: "",
+    gender: "",
     username: "",
     password: "",
     telephone: "",
@@ -27,112 +27,116 @@ function Signup() {
 
   return (
     <>
-      <div className="flex-container">
-        <div className="re-left-half">
-          <div className="login-container">
-            <h1>HELLO THERE!</h1>
-            <p>
-              Please provide information to register your <br />
-              account before making reservations.
-              <br />
-              Thank you!
-            </p>
-            <div className="logo">
-              <img src={logo} alt="Your Logo" />
-            </div>
-            <p>Already have an account? Log in!</p>
+      <div className="bigbg">
+        <div className="flex-container">
+          <div className="re-left-half">
+            <div className="login-container">
+              <h1>HELLO THERE!</h1>
+              <p>
+                Please provide information to register your <br />
+                account before making reservations.
+                <br />
+                Thank you!
+              </p>
+              <div className="logo">
+                <img src={logo} alt="Your Logo" />
+              </div>
+              <p>Already have an account? Log in!</p>
 
-            <Link to="/login">
-              {" "}
-              <div className="go-register">
-                <p>Login</p>
-              </div>
-            </Link>
+              <Link to="/login">
+                {" "}
+                <div className="go-register">
+                  <p>Login</p>
+                </div>
+              </Link>
+            </div>
           </div>
-        </div>
-        <div className="re-right-half">
-          <div className="login-container">
-            <h1>Register</h1>
-            <form className="login-form">
-              <div className="name-container">
-                <div>
-                  <label>First Name:</label>
-                  <input
-                    type="text"
-                    name="firstName"
-                    value={formData.firstName}
-                    onChange={handleChange}
-                  />
+          <div className="re-right-half">
+            <div className="login-container">
+              <h1>Register</h1>
+              <form className="login-form">
+                <div className="name-container">
+                  <div>
+                    <label>First Name:</label>
+                    <input
+                      type="text"
+                      name="firstName"
+                      value={formData.firstName}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div>
+                    <label>Last Name:</label>
+                    <input
+                      type="text"
+                      name="lastName"
+                      value={formData.lastName}
+                      onChange={handleChange}
+                    />
+                  </div>
                 </div>
-                <div>
-                  <label>Last Name:</label>
-                  <input
-                    type="text"
-                    name="lastName"
-                    value={formData.lastName}
-                    onChange={handleChange}
-                  />
+                <div className="name-container">
+                  <div>
+                    <label>Gender:</label>
+                    <input
+                      type="text"
+                      name="gender"
+                      value={formData.gender}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div>
+                    <label>Birthday:</label>
+                    <input
+                      type="date"
+                      name="birthday"
+                      value={formData.birthday}
+                      onChange={handleChange}
+                    />
+                  </div>
                 </div>
-              </div>
-              <div>
-                <label>Email:</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                />
-              </div>
-              <div>
-                <label>Username:</label>
-                <input
-                  type="text"
-                  name="username"
-                  value={formData.username}
-                  onChange={handleChange}
-                />
-              </div>
-              <div>
-                <label>Password:</label>
-                <input
-                  type="password"
-                  name="password"
-                  value={formData.password}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="name-container">
                 <div>
                   <label>Telephone:</label>
                   <input
-                    type="tel"
+                    type="text"
                     name="telephone"
                     value={formData.telephone}
                     onChange={handleChange}
                   />
                 </div>
                 <div>
-                  <label>Birthday:</label>
+                  <label>Username:</label>
                   <input
-                    type="date"
-                    name="birthday"
-                    value={formData.birthday}
+                    type="text"
+                    name="username"
+                    value={formData.username}
                     onChange={handleChange}
                   />
                 </div>
-              </div>
-              <button type="submit" className="login-button">
-                Submit
-              </button>
-              <div className="separator">
-                <hr />
-                <span>or</span>
-                <hr />
-              </div>
-              <button type="button" className="google-login-button">
-              <FcGoogle className="icon-google"/>Continue with Google
-              </button>
-            </form>
+                <div>
+                  <label>Password:</label>
+                  <input
+                    type="password"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleChange}
+                  />
+                </div>
+                
+                <button type="submit" className="login-button">
+                  Submit
+                </button>
+                <div className="separator">
+                  <hr />
+                  <span>or</span>
+                  <hr />
+                </div>
+                <button type="button" className="google-login-button">
+                  <FcGoogle className="icon-google" />
+                  Continue with Google
+                </button>
+              </form>
+            </div>
           </div>
         </div>
       </div>

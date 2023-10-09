@@ -7,6 +7,7 @@ import { FcGoogle } from "react-icons/fc";
 function Signin() {
   return (
     <>
+      <div className="bigbg">
       <div className="flex-container">
         <div className="left-half">
           <div className="login-container">
@@ -54,6 +55,7 @@ function Signin() {
             </Link>
           </div>
         </div>
+      </div>
       </div>
     </>
   );

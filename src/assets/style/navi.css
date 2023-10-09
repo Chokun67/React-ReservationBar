@@ -1,5 +1,4 @@
 header {
-    padding: 10px 0;
     position: absolute;
     top :0;
     left:0;
@@ -8,24 +7,23 @@ header {
   }
   
   nav {
-    
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 10px 100px;
+    background-image: linear-gradient(to bottom, rgba(9, 19, 59, 1) 0%, rgba(9, 19, 59, 0) 100%);
   }
   
   .logo {
     display: flex;
     align-items: center;
+    max-width: 120px; /* ปรับขนาดรูปภาพ Logo ตามที่คุณต้องการ */
+    min-width: 80px;
   }
   
   .logo img {
     width: 100%;
-    max-width: 100px; /* ปรับขนาดรูปภาพ Logo ตามที่คุณต้องการ */
-    min-width: 80px;
     margin-right: 10px; /* ระยะห่างระหว่าง Logo กับข้อความ (ถ้ามี) */
   }
   
@@ -45,7 +43,7 @@ header {
   }
 
   .auth-buttons div  {
-    background: linear-gradient(#5b4a5a, #7a6d79) padding-box,
+    background: linear-gradient(#09133B, #09133B) padding-box,
     linear-gradient(to right, #3C79D4,#FFA6FA) border-box;
     border-radius: 6px;
     border: 4px solid transparent;

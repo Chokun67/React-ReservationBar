@@ -3,11 +3,27 @@ body {
     padding: 0;
 }
 
+.bigbg{
+  height: 100vh;
+  width: 100vw;
+  background-image: url('../image/authenbg.png');
+  background-size: cover;
+    background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: -1; 
+}
+
 .flex-container {
     display: flex;
-    height: 100vh;
-    width: 100vi;
+    height: 80vh;
+    width: 70vw;
+    border: 4px solid transparent;
+    border-radius: 45px;
+    overflow: hidden;
 }
+
 .login-container {
     width: 70%;
     height: 100%;
@@ -15,6 +31,8 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border: 4px solid transparent;
+    border-radius: 6px;
   }
 
 .re-left-half {
@@ -37,7 +55,7 @@ body {
     background-repeat: no-repeat;
     background-position: center center;
     filter: blur(4px); 
-    z-index: -1; 
+    z-index: 0; 
 }
 
 .logo {
@@ -94,7 +112,7 @@ body {
     width: 100%;
     padding: 8px;
     background-color: #D9D9D9;
-    margin-bottom: 15px;
+    margin-bottom: 0px;
     border: 1px solid #D2D2D2;
     border-radius: 4px;
     display: flex;
@@ -119,5 +137,10 @@ body {
   .icon-google{
     font-size: 1.5em ;
     margin-right: 5px;
+  }
+
+  .separator{
+    display: flex;
+    margin: 10px 0;
   }
   

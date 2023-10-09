@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
 body {
   margin: 0;
   padding: 0;
@@ -10,7 +11,7 @@ body {
   position: relative;
   width: 100%;
   height: 100vh;
-  background-image: url('assets/image/mainbg.jpg');
+  background-image: url('assets/image/mainbg2.png');
   background-size: cover;
   background-position: center;
 }
@@ -22,9 +23,9 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  
+  /* background-color: rgba(0, 0, 0, 0.5); */
 }
+
 .boxcover {
   display: flex;
   justify-content: center;
@@ -34,13 +35,52 @@ body {
   left: 0;
   width: 100%;
 }
+
 .content {
+  display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   width: 50%;
   text-align: center; /* จัดข้อความให้อยู่ตรงกลางแนวนอน */
   color: white; /* สีข้อความ */
-  padding: 20px; /* ระยะห่างของเนื้อหา */
+}
+
+.storepic {
+  display: flex;
+  align-items: center;
+  max-width: 90%; /* ให้ .storepic ไม่เกินความกว้างสูงสุดของพื้นที่ที่ตั้ง */
+  overflow: hidden; /* ให้ซ่อนส่วนที่เกินของรูปภาพ */
+}
+
+.storepic img {
+  width: 100%; /* ให้รูปภาพเต็มขนาดของ .storepic */
+  height: auto; /* ให้สูงของรูปภาพปรับตามอัตราส่วน */
+  max-width: 100%; /* ให้รูปภาพไม่เกินความกว้างของ .storepic */
+}
+
+.welcome{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: 50%;
+  color: white; /* สีข้อความ */
+}
+
+
+.content2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 70%;
+  height: 100%;
+  color: white; /* สีข้อความ */
+}
+
+.content2 h1{
+  font-size: 5rem;
+  font-family: 'Orbitron', sans-serif;
 }
 
 .pane2 {

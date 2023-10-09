@@ -3,11 +3,23 @@ body {
     padding: 0;
 }
 
-.flex-container {
-    display: flex;
+/* .bigbg{
     height: 100vh;
-    width: 100vi;
-}
+    width: 100vw;
+    background-color: #002444;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: -1; 
+} */
+
+/* .flex-container {
+    border: 4px solid transparent;
+    border-radius: 20px;
+    display: flex;
+    height: 80vh;
+    width: 80vw;
+} */
 
 .left-half {
     flex:1;
@@ -63,6 +75,7 @@ body {
     cursor: pointer;
     font-weight: bold;
     width: 100%;
+    margin-top: 10px;
 }
 .google-login-button {
     background-color: #fff;
@@ -114,23 +127,27 @@ body {
     right: 0;
     bottom: 0;
     background-image: url('../image/bglogin.png');
-    background-size: cover;
+    background-size:cover;
     background-repeat: no-repeat;
     background-position: center center;
     filter: blur(4px); /* ปรับระดับของเบลอตามต้องการ */
-    z-index: -1; /* ให้แผ่นสีเบลออยู่หน้ารูปภาพ */
+    z-index: 0; /* ให้แผ่นสีเบลออยู่หน้ารูปภาพ */
 }
 
 .logo {
     display: flex;
     align-items: center;
-  }
-  
-  .logo img {
-    width: 100%;
+    &img{
+        width: 100%;
     max-width: 180px; /* ปรับขนาดรูปภาพ Logo ตามที่คุณต้องการ */
     min-width: 100px;
     margin-right: 10px; /* ระยะห่างระหว่าง Logo กับข้อความ (ถ้ามี) */
+    }
+    
+  }
+
+  .login-container{
+    z-index: 1;
   }
 
   Link{

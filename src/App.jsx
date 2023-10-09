@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import Navi from "./components/navi.jsx";
 import Corousel from "./components/corousel";
+import Footer from "./components/footer"
 
 function App() {
   const [count, setCount] = useState(0);
@@ -37,6 +38,7 @@ function App() {
           <Corousel />
         </div>
       </div>
+      <Footer />
     </>
   );
 }

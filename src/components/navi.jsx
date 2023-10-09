@@ -13,7 +13,7 @@ function navi() {
           </div>
           <ul>
             <li>
-              <Link to="/login">RESERVE</Link>
+              <Link to="/reserve">RESERVE</Link>
             </li>
             <li>
               <Link to="/login">MUSIC</Link>
