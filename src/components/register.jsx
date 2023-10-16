@@ -27,31 +27,7 @@ function Signup() {
 
   return (
     <>
-      <div className="bigbg">
-        <div className="flex-container">
-          <div className="re-left-half">
-            <div className="regis-container">
-              <h1>HELLO THERE!</h1>
-              <p>
-                Please provide information to register your <br />
-                account before making reservations.
-                <br />
-                Thank you!
-              </p>
-              <div className="logo">
-                <img src={logo} alt="Your Logo" />
-              </div>
-              <p>Already have an account? Log in!</p>
-
-              <Link to="/login">
-                {" "}
-                <div className="go-register">
-                  <p>Login</p>
-                </div>
-              </Link>
-            </div>
-          </div>
-          <div className="re-right-half">
+      <div className="re-right-half">
             <div className="regis-container">
               <h1>Register</h1>
               <form className="login-form">
@@ -122,7 +98,7 @@ function Signup() {
                     onChange={handleChange}
                   />
                 </div>
-                
+
                 <button type="submit" className="login-button">
                   Submit
                 </button>
@@ -132,14 +108,11 @@ function Signup() {
                   <hr />
                 </div>
                 <button type="button" className="google-login-button">
-                  <FcGoogle className="icon-google" />
                   Continue with Google
                 </button>
               </form>
             </div>
           </div>
-        </div>
-      </div>
     </>
   );
 }

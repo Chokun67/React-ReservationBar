@@ -11,7 +11,7 @@ function Home() {
   return (
     <>
       <div className="full-screen-bg">
-        <div className="overlay">
+        <div className="firstpage">
           <Navi />
           <div className="boxcover">
             <div className="content">

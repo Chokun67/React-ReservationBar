@@ -10,7 +10,7 @@
     font-family: 'Urbanist', sans-serif;
 }
 
-.container {
+.box-corousel {
     padding-top: 30px;
     width: 100%;
     height: 100%;
@@ -25,8 +25,8 @@
 
 .cards {
     position: relative;
-    height: 350px;
-    width: 400px;
+    height: 21.875rem;
+    width: 25rem;
     perspective: 1200px;
     transform-style: preserve-3d;
 }
@@ -34,7 +34,7 @@
 .cards label {
     padding: 20;
     position: absolute;
-    width: 250px;
+    width: 15.625rem;
     left: 0;
     right: 0;
     margin: auto;

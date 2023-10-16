@@ -1,6 +1,6 @@
 .footer {
     display: flex;
-    height: 35vh; /* ความสูงของหน้าจอเต็มหน้าจอ */
+    height: 252; /* ความสูงของหน้าจอเต็มหน้าจอ */
     background-color: rgb(10, 18, 46);
     background-image: url('../image/footer.png');
     background-size:auto;

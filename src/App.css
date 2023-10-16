@@ -11,13 +11,13 @@ body {
   display: block;
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 720px;
   background-image: url('assets/image/mainbg2.png');
   background-size: cover;
   background-position: center;
 }
 
-.overlay {
+.firstpage {
   display: flex;
   flex-direction: column;
   top: 0;
@@ -87,7 +87,7 @@ body {
 .pane2 {
   display: flex; /* ใช้ Flexbox เพื่อแบ่งส่วน */
   justify-content: space-between; /* แบ่งส่วนแบบ space-between เพื่อให้ซ้าย 30% และขวา 70% */
-  height: 100vh; /* ให้สูงเท่ากับความสูงของหน้าจอ */
+  height: 710px; /* ให้สูงเท่ากับความสูงของหน้าจอ */
   background-image: linear-gradient(to top right,#09133B 30%,#a53fa5 ,#fa43f9 );
 }
 

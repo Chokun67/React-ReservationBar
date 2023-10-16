@@ -1,16 +1,19 @@
 import React from "react";
 import "../assets/style/navi.css";
-import logo from '../assets/image/logo.png';
-import { Link } from 'react-router-dom';
+import logo from "../assets/image/logo.png";
+import { Link } from "react-router-dom";
 
 function navi() {
   return (
     <div className="App">
       <header>
         <nav>
-          <div className="logo">
-            <img src={logo} alt="Your Logo" />
-          </div>
+          <Link to="/">
+            <div className="logo">
+              <img src={logo} alt="Your Logo" />
+              <div className="circle"></div>
+            </div>
+          </Link>
           <ul>
             <li>
               <Link to="/reserve">RESERVE</Link>
@@ -24,10 +27,10 @@ function navi() {
           </ul>
           <div className="auth-buttons">
             <div className="border-gradient border-gradient-purple radius">
-            <Link to="/login">Login</Link>
+              <Link to="/login">Login</Link>
             </div>
             <div className="border-gradient border-gradient-purple radius">
-            <Link to="/register">Register</Link>
+              <Link to="/register">Register</Link>
             </div>
           </div>
         </nav>
