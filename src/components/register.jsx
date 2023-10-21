@@ -108,7 +108,7 @@ function Signup() {
                   <hr />
                 </div>
                 <button type="button" className="google-login-button">
-                  Continue with Google
+                <FcGoogle className="icon-google"/> Continue with Google
                 </button>
               </form>
             </div>

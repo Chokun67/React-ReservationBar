@@ -26,7 +26,7 @@ function Signin() {
                   <hr />
                 </div>
                 <button type="button" className="google-login-button">
-                  Login with Google
+                  <FcGoogle className="icon-google"/>Login with Google
                 </button>
               </form>
             </div>

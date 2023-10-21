@@ -43,8 +43,8 @@ body {
   justify-content: center;
   align-items: center;
   width: 50%;
-  text-align: center; /* จัดข้อความให้อยู่ตรงกลางแนวนอน */
-  color: white; /* สีข้อความ */
+  text-align: center; 
+  color: white;
 }
 
 .storepic {

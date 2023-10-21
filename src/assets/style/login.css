@@ -17,10 +17,10 @@
 
 h1{
   margin: 0;
-  padding-bottom: 10px;
 }
 
 .login-form {
+  margin-top: 10px;
   background-color: #ffffff;
   width: 100%; /* กว้างเต็ม .login-container */
   display: flex;

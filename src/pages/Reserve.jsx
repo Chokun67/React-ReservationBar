@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Navi from "../components/navi.jsx";
 import "../assets/style/reserve.css";
+import BookTable from "../components/booktable.jsx";
+import Modal from '../components/Modal'
 
 function Reserve() {
   const [selectedDate, setSelectedDate] = useState(""); // สถานะเพื่อเก็บวันที่ที่เลือก
@@ -30,23 +32,23 @@ function Reserve() {
       {date}
     </option>
   ));
+  const flexContainerStyle = {
+    display: 'flex',
+    justifyContent: 'center', // จัดจุดกึ่งกลางในแนวนอน
+    alignItems: 'center' // จัดจุดกึ่งกลางในแนวตั้ง
+  };
 
   return (
     <>
-      <div className="full-screen-bg">
+      <div className="full-screen-bg-reserve">
         <div className="firstpage">
           <Navi />
           <div className="boxreserve">
             <div className="content">
-              <h1>Reguration</h1>
-              <ul className="howto">
-                <li>1.วอเตอร์ธัมโมเวสต์รันเวย์วีเจแป๋ว</li>
-                <li>2.ราชานุญาตคาปูชิโนสคริปต์ฮ่องเต้ซูเอี๋ย</li>
-                <li>3.มือถือเรซิ่นโปรเจ็คแม็กกาซีน</li>
-                <li>4.วาทกรรมแฮปปี้ยนตรกรรมด็อกเตอร์</li>
-              </ul>
-              <h2>PICK A DATE</h2>
-
+              <div style={flexContainerStyle}>
+                <h2>PICK A DATE</h2>
+                <Modal/>
+              </div>
               <div>
                 <select
                   className="dddate"
@@ -57,9 +59,11 @@ function Reserve() {
                 </select>
                 {selectedDate && <p>คุณเลือกวันที่: {selectedDate}</p>}
               </div>
-              <button type="submit" className="date-button">
+              {/* <button type="submit" className="date-button">
                 Rerservation
-              </button>
+              </button> */}
+              <div className="stage">Stage</div>
+              <BookTable/>
             </div>
           </div>
         </div>

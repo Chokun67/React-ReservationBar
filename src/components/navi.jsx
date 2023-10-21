@@ -29,9 +29,9 @@ function navi() {
             <div className="border-gradient border-gradient-purple radius">
               <Link to="/login">Login</Link>
             </div>
-            <div className="border-gradient border-gradient-purple radius">
+            {/* <div className="border-gradient border-gradient-purple radius">
               <Link to="/register">Register</Link>
-            </div>
+            </div> */}
           </div>
         </nav>
       </header>

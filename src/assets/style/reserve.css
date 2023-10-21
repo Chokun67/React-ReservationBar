@@ -1,3 +1,13 @@
+.full-screen-bg-reserve {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 820px;
+  background-image: url('../image/mainbg2.png');
+  background-size: cover;
+  background-position: center;
+}
+
 .boxreserve {
     display: flex;
     justify-content: center;
@@ -9,7 +19,7 @@
   }
 
 .howto{
-    display: flex;
+  display: flex;
   flex-direction: column; /* เรียงแนวตั้ง */
   list-style-type: none; /* ลบขีดเส้นหัวข้อรายการ */
   align-items: flex-start;
@@ -22,7 +32,6 @@
 .date-button{
     background-image: linear-gradient(to bottom right,#B6116B 30%,#3B1578);
     color: #fff;
-    
     border: none;
     padding: 20px 70px;
     border-radius: 15px;
@@ -43,4 +52,18 @@
     font-family: 'Orbitron', sans-serif;
     font-size: medium;
     border: 15px solid #F5F5F5;
+}
+
+.stage{
+  width: 260px; 
+  height: 80px; 
+  background-color: white; 
+  border: 4px solid purple;
+  margin-top: 10px; 
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: black;
 }
