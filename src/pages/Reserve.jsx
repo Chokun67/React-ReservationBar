@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Navi from "../components/navi.jsx";
 import "../assets/style/reserve.css";
 import BookTable from "../components/booktable.jsx";
-import Modal from '../components/Modal'
+import Modal from "../components/Modal";
 
 function Reserve() {
   const [selectedDate, setSelectedDate] = useState(""); // สถานะเพื่อเก็บวันที่ที่เลือก
@@ -33,9 +33,9 @@ function Reserve() {
     </option>
   ));
   const flexContainerStyle = {
-    display: 'flex',
-    justifyContent: 'center', // จัดจุดกึ่งกลางในแนวนอน
-    alignItems: 'center' // จัดจุดกึ่งกลางในแนวตั้ง
+    display: "flex",
+    justifyContent: "center", // จัดจุดกึ่งกลางในแนวนอน
+    alignItems: "center", // จัดจุดกึ่งกลางในแนวตั้ง
   };
 
   return (
@@ -44,10 +44,10 @@ function Reserve() {
         <div className="firstpage">
           <Navi />
           <div className="boxreserve">
-            <div className="content">
+           
               <div style={flexContainerStyle}>
                 <h2>PICK A DATE</h2>
-                <Modal/>
+                <Modal />
               </div>
               <div>
                 <select
@@ -59,12 +59,8 @@ function Reserve() {
                 </select>
                 {selectedDate && <p>คุณเลือกวันที่: {selectedDate}</p>}
               </div>
-              {/* <button type="submit" className="date-button">
-                Rerservation
-              </button> */}
               <div className="stage">Stage</div>
-              <BookTable/>
-            </div>
+              <BookTable />
           </div>
         </div>
       </div>

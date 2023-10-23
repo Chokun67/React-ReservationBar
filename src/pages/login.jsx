@@ -3,7 +3,6 @@ import "../assets/style/slide.css";
 import "../assets/style/login.css";
 import logo from "../assets/image/logo.png";
 import { Link } from "react-router-dom";
-import { FcGoogle } from "react-icons/fc";
 import Login from "../components/login.jsx";
 import Register from "../components/register.jsx";
 //////////////////////////////////////////////////////////////
@@ -60,9 +59,9 @@ const Signin = () => {
                   To keep connected with us please login with your personal info
                 </p>
                 <div className="logo">
-                    <Link to="/">
-                      <img src={logo} alt="Your Logo" />
-                    </Link>
+                  <Link to="/">
+                    <img src={logo} alt="Your Logo" />
+                  </Link>
                 </div>
                 <p>Don’t have an account? Register!</p>
                 <button

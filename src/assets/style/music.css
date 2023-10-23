@@ -1,0 +1,91 @@
+.full-screen-bg-music {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-image: url('../image/mainbg2.png');
+    background-size: cover;
+    background-position: center;
+  }
+
+.musicbox{
+  width: 460px; /* ปรับความกว้างตามที่คุณต้องการ */
+  height: 280px; /* ปรับความสูงตามที่คุณต้องการ */
+  border: 5px solid #FF53C0; /* สีเส้นขอบสีม่วง */
+  padding: 20px; /* ระยะขอบภายใน */
+  border-radius: 30px;
+  margin-top: 20px;
+}
+.top{
+    display: flex;
+    flex: 2;
+    align-items: center;
+}
+.mid{
+    display: flex;
+    flex: 1;
+}
+.bottom{
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+}
+.phone{
+    position: relative;
+    max-width: 110px;
+    min-width: 60px;
+    align-items: center;
+}
+
+.phone img {
+    width: 100%;
+    position: relative; /* เพิ่ม */
+  }
+
+.sidephone{
+    flex: 7;
+}
+.song{
+    display: flex;
+}
+.left-a .icons-top{
+    font-size: 3em ;
+}
+.left-a {
+    display: flex;
+    flex: 1;
+    align-items: center; 
+  }
+.left-b {
+    display: flex;
+    flex: 1;
+    align-items: end; 
+  }
+
+.left-b .FaYoutube{
+    font-size: 4em ;
+}
+  
+  .right {
+    display: flex;
+    flex-direction: column;
+    flex: 7;
+    padding: 10px;
+    justify-content: start;
+    align-items: start;
+  }
+
+  .music-button{
+    background: linear-gradient(#511ea4, #511ea4) padding-box,
+    linear-gradient(to right, rgba(96, 255, 202,0),rgba(96, 255, 202)) border-box;
+    border: 2px solid transparent;
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: medium;
+  }

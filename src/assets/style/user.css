@@ -1,0 +1,23 @@
+.user-box{
+    background-image: linear-gradient(to top right,#0E032C,#6E4BD0);
+    width: 720px; /* ปรับความกว้างตามที่คุณต้องการ */
+    height: 450px; /* ปรับความสูงตามที่คุณต้องการ */
+    padding: 30px; /* ระยะขอบภายใน */
+    border-radius: 20px;
+    margin-top: 20px;
+}
+
+.left-user{
+    display: flex;
+    flex: 3;
+    align-items: center; 
+}
+.right-user{
+    display: flex;
+    flex: 2;
+    align-items: center; 
+}
+
+.user-box hr{
+    border: 3px solid #7BDAFB;
+}

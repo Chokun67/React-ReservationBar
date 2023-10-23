@@ -3,9 +3,10 @@ import "../assets/style/booktable.css";
 import image1 from '../assets/image/image1.png';
 import image2 from '../assets/image/image2.png';
 import image3 from '../assets/image/image3.png';
+import Slide from '../components/bottomsheet.jsx'
 
 function Table() {
-  const [prohibitBoxes, setProhibitBoxes] = useState([true,,false,false,false,false,false,false,false,false])
+  const [prohibitBoxes, setProhibitBoxes] = useState([true,false,false,false,false,false,false,false,false])
   const [selectedBoxes, setSelectedBoxes] = useState(Array(10).fill(false));
 
   const handleBoxClick = (boxIndex) => {
@@ -24,7 +25,7 @@ function Table() {
       const Prohibit = prohibitBoxes[i];
       const isSelected = selectedBoxes[i];
       const image = Prohibit ? image3 : isSelected ? image2 : image1;
-
+      {selectedBoxes.some((isSelected) => isSelected)}
       boxes.push(
         <div
           key={i}
@@ -42,6 +43,9 @@ function Table() {
   return (
     <div className="table-page">
       <div className="table-container">{renderBoxes()}</div>
+      {selectedBoxes.some((isSelected) => isSelected) && (
+          <Slide selectedBoxes={selectedBoxes} />
+        )}
     </div>
   );
 }

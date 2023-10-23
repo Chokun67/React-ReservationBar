@@ -19,19 +19,16 @@ function navi() {
               <Link to="/reserve">RESERVE</Link>
             </li>
             <li>
-              <Link to="/login">MUSIC</Link>
+              <Link to="/music">MUSIC</Link>
             </li>
             <li>
-              <Link to="/register">USER</Link>
+              <Link to="/user">USER</Link>
             </li>
           </ul>
           <div className="auth-buttons">
-            <div className="border-gradient border-gradient-purple radius">
+            <div>
               <Link to="/login">Login</Link>
             </div>
-            {/* <div className="border-gradient border-gradient-purple radius">
-              <Link to="/register">Register</Link>
-            </div> */}
           </div>
         </nav>
       </header>
