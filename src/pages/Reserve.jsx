@@ -44,7 +44,6 @@ function Reserve() {
         <div className="firstpage">
           <Navi />
           <div className="boxreserve">
-           
               <div style={flexContainerStyle}>
                 <h2>PICK A DATE</h2>
                 <Modal />

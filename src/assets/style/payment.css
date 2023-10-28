@@ -1,0 +1,47 @@
+.payment-box{
+    width: 30vw; /* ปรับความกว้างตามที่คุณต้องการ */
+    height: 40vh; /* ปรับความสูงตามที่คุณต้องการ */
+    border: 5px solid #FF53C0; /* สีเส้นขอบสีม่วง */
+    padding: 70px; /* ระยะขอบภายใน */
+    border-radius: 30px;
+    margin-top: 20px;
+}
+.table-pay{
+    height: 100px;
+}
+.table-pay img{
+    max-width: 100%;
+    height: auto;
+}
+.detail-table{
+    display: flex;
+    align-items: start;
+}
+.detail-table p{
+    font-size: 30px;
+    margin: 0;
+    padding-left: 30px;
+}
+.select-time label{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding-top: 20px;
+}
+.select-time label{
+    font-size: 20px;
+}
+.select-bottle label{
+    font-size: 20px;
+    padding-top: 20px;
+}
+@media screen and (max-width: 420px) {
+    .payment-box{
+        width: 80vw; /* ปรับความกว้างตามที่คุณต้องการ */
+        height: 40vh; /* ปรับความสูงตามที่คุณต้องการ */
+        border: 5px solid #FF53C0; /* สีเส้นขอบสีม่วง */
+        padding: 10px; /* ระยะขอบภายใน */
+        border-radius: 30px;
+        margin-top: 20px;
+    }
+  }

@@ -78,13 +78,14 @@ body {
 }
 
 .content2 h1{
-  font-size: 5rem;
+  font-size: 5vw;
   font-family: 'Orbitron', sans-serif;
 }
 
 .pane2 {
   display: flex; /* ใช้ Flexbox เพื่อแบ่งส่วน */
   justify-content: space-between; /* แบ่งส่วนแบบ space-between เพื่อให้ซ้าย 30% และขวา 70% */
+  position: relative;
   height: 710px; /* ให้สูงเท่ากับความสูงของหน้าจอ */
   background-image: linear-gradient(to top right,#09133B 30%,#a53fa5 ,#fa43f9 );
 }
@@ -97,13 +98,13 @@ body {
 }
 
 .left-pane h1{
-  margin: 20vh 0 0 20vh;
-  font-size: 4rem;
+  margin: 20vh 0 0 15vh;
+  font-size: clamp(50px,8vw,60px);
 }
 
-.left-pane a{
+.left-pane p{
   color: white;
-  font-size: 40px;
+  font-size: 25px;
   margin: 10px 0 0 20vh;
 }
 
@@ -111,24 +112,69 @@ body {
   width: 70%;
 }
 
-.flex-between{
-  display: flex;
-  justify-content: space-around;
+/* responsive design */
+@media screen and (max-width: 820px) {
+  .full-screen-bg {
+    display: flex;
+    position: relative;
+    width: 100vw;
+    height: 100%;
+    background-image: url('assets/image/mainbg2.png');
+    background-size: cover;
+    background-position: center;
+  }
+
+  .boxcover{
+    flex-direction: column;
+  }
+  
+  .storepic {
+    display: flex;
+    align-items: center;
+    max-width: 100%; /* ให้ .storepic ไม่เกินความกว้างสูงสุดของพื้นที่ที่ตั้ง */
+    height: 100%;
+    overflow: hidden; /* ให้ซ่อนส่วนที่เกินของรูปภาพ */
+    margin-top: 40px;
+  }
+  
+  .storepic img {
+    width: 100%; /* ให้รูปภาพเต็มขนาดของ .storepic */
+    height: auto; /* ให้สูงของรูปภาพปรับตามอัตราส่วน */
+    max-width: 100%; /* ให้รูปภาพไม่เกินความกว้างของ .storepic */
+  }
+  .content2{
+    width: 100%;
+  }
+  .content2 h1{
+    font-size: 3rem;
+  }
+  .welcome{
+    width: 90%;
+  }
+  .pane2{
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .left-pane{
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+  .left-pane h1{
+    margin: 20vh 0 0 0;
+    font-size: clamp(50px,8vw,60px);;
+  }
+  
+  .left-pane p{
+    color: white;
+    font-size: 25px;
+    margin: 0 0 0 0;
+  }
+  .right-pane{
+    width: 100%;
+  }
+  
 }
 
-.flex-column{
-  display: flex;
-  flex-direction: column;
-}
 
-.boxcenter{
-  display: flex;
-  justify-content: center;
-  flex-grow: 1;
-  width: 100vw;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center; 
-  color: white;
-}

@@ -5,7 +5,7 @@
     align-items: center;
     justify-content: center;
     overflow-x: hidden;
-    height: 100vh;
+    height: 100%;
     width: 100%;
     font-family: 'Urbanist', sans-serif;
 }
@@ -24,17 +24,19 @@
 }
 
 .cards {
+    display: flex;
     position: relative;
     height: 21.875rem;
-    width: 25rem;
+    width: 100%;
     perspective: 1200px;
     transform-style: preserve-3d;
+    align-items: center;
 }
 
 .cards label {
     padding: 20;
     position: absolute;
-    width: 15.625rem;
+    width: clamp(6rem,20vw,16rem);
     left: 0;
     right: 0;
     margin: auto;
@@ -54,7 +56,7 @@
 .card .image img{
     box-shadow: 15px 15px 40px rgba(0, 0, 0, 50%);
     width: 100%;
-    height: 300px;
+    height: 40vh;
     object-fit:fill;
 }
 
@@ -95,3 +97,12 @@
 .btn-corou{
     display: flex;
 }
+@media screen and (max-width: 420px) {
+    
+    .card .image img{
+        box-shadow: 15px 15px 40px rgba(0, 0, 0, 50%);
+        width: 100%;
+        height: 10rem;
+        object-fit:fill;
+    }
+  }

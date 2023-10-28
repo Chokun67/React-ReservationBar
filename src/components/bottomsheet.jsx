@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../assets/style/bottomsheet.css";
+import { useNavigate } from 'react-router-dom';
 
 function BottomSheet({ selectedBoxes }) {
   const [isOpen, setIsOpen] = useState(true);
@@ -14,12 +15,17 @@ function BottomSheet({ selectedBoxes }) {
 
   const currentDate = new Date();
   const formattedDate = new Intl.DateTimeFormat('en-US', { day: '2-digit', month: '2-digit', year: 'numeric' }).format(currentDate);
+  const navigate = useNavigate();
+  const goPayment = () => {
+    // เมื่อคลิกปุ่ม, เรียกใช้ history.push() เพื่อเปิดเส้นทาง "/reserve"
+    navigate('/payment');
+  };
 
   return (
     <div className={`bottom-sheet ${isOpen ? "open" : ""}`}>
       <div className="bottom-sheet-content">
-        <div className="flex-between">
-          <div className="content">
+        <div className="flex-betweencenter">
+          <div className="">
             <p>{formattedDate}</p>
             <div className="slidebottom">
               <p>Table:</p>
@@ -29,7 +35,7 @@ function BottomSheet({ selectedBoxes }) {
               )}
             </div>
           </div>
-          <button type="submit" className="date-button">
+          <button type="submit" className="date-button" onClick={goPayment}>
             Rerservation
           </button>
         </div>

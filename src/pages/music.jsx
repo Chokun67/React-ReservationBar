@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Navi from "../components/navi.jsx";
 import "../assets/style/music.css";
-import { BiHeadphone } from "react-icons/bi";
 import { FaYoutube } from "react-icons/fa";
 import { AiOutlineCheck } from "react-icons/ai";
 import { BsMusicNote ,BsFillPersonFill} from "react-icons/bs";
@@ -80,7 +79,7 @@ function Music() {
                 </div>
               </div>
               <div className="bottom">
-                <button className="music-button">
+                <button className="left-border-button">
                   confirm <AiOutlineCheck />
                 </button>
               </div>

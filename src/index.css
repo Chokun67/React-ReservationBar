@@ -1,3 +1,69 @@
+ /* css use in any component */
+ 
+ .flex-between{
+  display: flex;
+  justify-content: space-around;
+}
+
+.flex-betweencenter{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.flex-column{
+  display: flex;
+  flex-direction: column;
+}
+.flex-row{
+  display: flex;
+  flex-direction: row;
+}
+.flex-part1{
+  flex:1
+}
+.flex-part3{
+  flex:3
+}
+.boxcenter{
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+  width: 100vw;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center; 
+  color: white;
+}
+
+.left-border-button{
+  background: linear-gradient(#511ea4, #511ea4) padding-box,
+  linear-gradient(to right, rgba(96, 255, 202,0),rgba(96, 255, 202)) border-box;
+  border: 2px solid transparent;
+  color: #fff;
+  padding: 8px 15px;
+  border-radius: 15px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 10px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: medium;
+}
+
+.right-border-button{
+  background: linear-gradient(#511ea4, #511ea4) padding-box,
+  linear-gradient(to left, rgba(96, 255, 202,0),rgba(96, 255, 202)) border-box;
+  border: 2px solid transparent;
+  color: #fff;
+  padding: 8px 15px;
+  border-radius: 15px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 10px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: medium;
+}
 /* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -28,7 +94,6 @@ body {
   display: flex;
   place-items: center;
   min-width: 320px;
-  min-height: 100vh;
 }
 
 /* h1 {

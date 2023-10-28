@@ -12,7 +12,7 @@
   width: 460px; /* ปรับความกว้างตามที่คุณต้องการ */
   height: 280px; /* ปรับความสูงตามที่คุณต้องการ */
   border: 5px solid #FF53C0; /* สีเส้นขอบสีม่วง */
-  padding: 20px; /* ระยะขอบภายใน */
+  padding: 30px 40px; /* ระยะขอบภายใน */
   border-radius: 30px;
   margin-top: 20px;
 }
@@ -34,7 +34,7 @@
 .phone{
     position: relative;
     max-width: 110px;
-    min-width: 60px;
+    min-width: 30px;
     align-items: center;
 }
 
@@ -45,12 +45,13 @@
 
 .sidephone{
     flex: 7;
+    width: 100%;
 }
 .song{
     display: flex;
 }
 .left-a .icons-top{
-    font-size: 3em ;
+    font-size: 3rem ;
 }
 .left-a {
     display: flex;
@@ -64,7 +65,7 @@
   }
 
 .left-b .FaYoutube{
-    font-size: 4em ;
+    font-size: 4rem ;
 }
   
   .right {
@@ -76,16 +77,25 @@
     align-items: start;
   }
 
-  .music-button{
-    background: linear-gradient(#511ea4, #511ea4) padding-box,
-    linear-gradient(to right, rgba(96, 255, 202,0),rgba(96, 255, 202)) border-box;
-    border: 2px solid transparent;
-    color: #fff;
-    padding: 8px 15px;
-    border-radius: 15px;
-    cursor: pointer;
-    font-weight: bold;
-    margin-top: 10px;
-    font-family: 'Orbitron', sans-serif;
-    font-size: medium;
+  @media screen and (max-width: 820px) {
+    .top{
+      flex-direction: column;
+    }
+    .musicbox{
+      width: 70%; /* ปรับความกว้างตามที่คุณต้องการ */
+      height: 420px; /* ปรับความสูงตามที่คุณต้องการ */
+      border: 5px solid #FF53C0; /* สีเส้นขอบสีม่วง */
+      padding: 20px; /* ระยะขอบภายใน */
+      border-radius: 30px;
+      margin-top: 20px;
+    }
+    .left-b {
+      display: flex;
+      flex: 1;
+      align-items: center; 
+    }
+    .left-b .FaYoutube{
+      font-size: 3rem ;
   }
+  }
+  

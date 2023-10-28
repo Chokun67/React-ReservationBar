@@ -4,6 +4,7 @@ header {
     left:0;
     width: 100%;
     z-index: 11111;
+    background-image: linear-gradient(to bottom, rgba(9, 19, 59, 1) 0%, rgba(9, 19, 59, 0) 100%);
   }
   
   nav {
@@ -11,22 +12,21 @@ header {
     justify-content: space-between;
     align-items: center;
     margin: 0 auto;
-    padding: 10px 100px;
-    background-image: linear-gradient(to bottom, rgba(9, 19, 59, 1) 0%, rgba(9, 19, 59, 0) 100%);
+    max-width: 1140px;
+    padding: 10px;
   }
   
   .logo {
     position: relative;
     display: flex;
     align-items: center;
-    max-width: 100px;
-    min-width: 60px;
+    max-width: 110px;
+    min-width: 70px;
   }
   
   .logo img {
     width: 100%;
     position: relative; /* เพิ่ม */
-    
     z-index: 1; /* ให้รูป logo อยู่ด้านหน้า */
   }
   
@@ -67,7 +67,7 @@ header {
     linear-gradient(to right, #3C79D4,#FFA6FA) border-box;
     border-radius: 6px;
     border: 4px solid transparent;
-    padding: 8px 25px;
+    padding: 6px 25px;
     color: white;
     font-size: 1em;
     font-weight: 500;
@@ -88,21 +88,69 @@ header {
     display: flex;
     gap: 10px;
   }
+  nav .menu {
+    display: none;
+    position: absolute;
+    top: 0.75rem;
+    right: 0.5rem;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 2.25rem;
+    height: 2rem;
+    z-index: 11112;
+  }
 
+nav .menu span {
+    height: 0.4rem;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 0.2rem;
+}
 
-  
-  /* .auth-buttons button {
-    background: none; 
-  padding: 10px 20px;
-  border: 2px solid transparent; 
-  background-image: linear-gradient(to right, #ff6600, #ff33cc);
-  color: white; 
-  font-size: 16px; 
-  cursor: pointer; 
-  border-radius: 8px;
-  } */
-  
-  /* button:hover {
-    background-color: #0056b3; 
-  } */
+  @media screen and (max-width: 600px){
+    nav ul{
+      display: none;
+    }
+
+    nav .menu {
+      display: flex;
+  }
+
+  nav {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+
+  nav ul {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      margin-bottom: 0.25rem;
+  }
+  nav ul.open {
+    display: flex;
+    background-color: #122058;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 11111;
+}
+
+nav ul li {
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+}
+.logo {
+  max-width: 70px;
+}
+.auth-buttons {
+  position: absolute;
+    top: 0.75rem;
+    right: 4rem;
+}
+
+  }
   

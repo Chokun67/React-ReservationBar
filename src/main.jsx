@@ -7,7 +7,9 @@ import Home from './pages/Home.jsx'
 import Signin from './pages/login.jsx'
 import User from './pages/User.jsx'
 import Reserve from './pages/Reserve.jsx'
-import Music from './pages/music.jsx'  
+import Music from './pages/music.jsx' 
+import Editprofile from './pages/editprofile.jsx'
+import Payment from './pages/payment' 
 
 const router = createBrowserRouter([
   {
@@ -29,6 +31,14 @@ const router = createBrowserRouter([
   {
     path: "music",
     element: <Music/>
+  },
+  {
+    path: "Editprofile",
+    element: <Editprofile/>
+  },
+  {
+    path: "payment",
+    element: <Payment/>
   }
 ]
 );

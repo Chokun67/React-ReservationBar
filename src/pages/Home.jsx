@@ -39,8 +39,7 @@ function Home() {
       <div className="pane2">
         <div className="left-pane">
           <h1>FEATURES</h1>
-          <a>จองโต้ะ</a>
-          <a>ขอเพลง</a>
+          <p>Reservation for tables <br/>Request for music</p>
         </div>
         <div className="right-pane">
           <Corousel />

@@ -1,7 +1,7 @@
 .user-box{
     background-image: linear-gradient(to top right,#0E032C,#6E4BD0);
-    width: 720px; /* ปรับความกว้างตามที่คุณต้องการ */
-    height: 450px; /* ปรับความสูงตามที่คุณต้องการ */
+    width: 700px; /* ปรับความกว้างตามที่คุณต้องการ */
+    height: 440px; /* ปรับความสูงตามที่คุณต้องการ */
     padding: 30px; /* ระยะขอบภายใน */
     border-radius: 20px;
     margin-top: 20px;
@@ -21,3 +21,72 @@
 .user-box hr{
     border: 3px solid #7BDAFB;
 }
+
+.profilepic {
+    position: relative;
+    display: flex;
+    align-items: center;
+    max-width: 100px;
+    min-width: 60px;
+  }
+  
+  .profilepic img {
+    width: 100%;
+    position: relative; /* เพิ่ม */
+    
+    z-index: 1; /* ให้รูป logo อยู่ด้านหน้า */
+  }
+
+.grid-user {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 คอลัมน์ */
+    grid-template-rows: repeat(4, 1fr); /* 4 แถว */
+    gap: 10px 20px; /* ระยะห่างระหว่าง grid items */
+  }
+  
+  .detail-user {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  .name {
+    font-weight: bold;
+  }
+
+  .form-user {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+  }
+  
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .form-group {
+    flex: 1;
+    margin-right: 10px;
+  }
+  
+  label {
+    display: block;
+    font-weight: bold;
+  }
+  
+  input,
+  select {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  
