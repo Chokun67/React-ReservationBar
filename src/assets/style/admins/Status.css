@@ -1,0 +1,32 @@
+.status-box2{
+    width: 60rem; /* ปรับความกว้างตามที่คุณต้องการ */
+    height: 30rem; /* ปรับความสูงตามที่คุณต้องการ */
+    border-radius:  0 20px 20px 20px;
+    background-color: #111C44;
+    color: white;
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  .tr-admin th {
+    border-bottom: 2px solid #888585;
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+  }
+  .tr-admin td {
+    text-align: center;
+    padding-top: 20px;
+    font-size: 12px;
+  }
+
+  .status-box3{
+    width: 60rem; /* ปรับความกว้างตามที่คุณต้องการ */
+    height: 30rem; /* ปรับความสูงตามที่คุณต้องการ */
+    border-radius:  20px 20px 20px 20px;
+    background-color: #111C44;
+    color: white;
+}

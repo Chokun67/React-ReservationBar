@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../assets/style/user.css";
 import Navi from "../components/navi.jsx";
 import profile from "../assets/image/profile.png";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import { API } from "../assets/api/authen";
+import { useCookies } from "react-cookie";
+
 function User() {
   const [formData, setFormData] = useState({
     firstName: "",
@@ -26,9 +29,29 @@ function User() {
   };
   const navigate = useNavigate();
   const goEdit = () => {
-    // เมื่อคลิกปุ่ม, เรียกใช้ history.push() เพื่อเปิดเส้นทาง "/reserve"
-    navigate('/editprofile');
+    navigate("/editprofile");
   };
+  const [cookies, setCookie, removeCookie] = useCookies(["token"]);
+
+  useEffect(() => {
+    API.fetchPersonaleData(cookies.token)
+      .then((response) => {
+        console.log("POST Response:", response.data);
+        const separatedname = response.data.name.split(" ");
+        setFormData({
+          firstName: separatedname[0],
+          lastName: separatedname[1],
+          gender: response.data.gender,
+          username: response.data.username,
+          password: response.data.password,
+          telephone: response.data.phone,
+          birthday: response.data.birthday,
+        });
+      })
+      .catch((error) => {
+        console.error("POST Error:", error);
+      });
+  }, []);
 
   return (
     <>
@@ -46,38 +69,36 @@ function User() {
                 <div className="grid-user">
                   <div className="detail-user">
                     <div className="name">First Name:</div>
-                    <div>นามสกุล 1</div>
+                    <div>{formData.firstName}</div>
                   </div>
                   <div className="detail-user">
                     <div className="name">Last Name:</div>
-                    <div>นามสกุล 2</div>
+                    <div>{formData.lastName}</div>
                   </div>
                   <div className="detail-user">
                     <div className="name">Gender</div>
-                    <div>นามสกุล 3</div>
+                    <div>{formData.gender}</div>
                   </div>
                   <div className="detail-user">
                     <div className="name">Birthday</div>
-                    <div>นามสกุล 4</div>
+                    <div>{formData.birthday}</div>
                   </div>
                   <div className="detail-user">
                     <div className="name">Tel. number:</div>
-                    <div>นามสกุล 1</div>
+                    <div>{formData.telephone}</div>
                   </div>
-                  <div className="detail-user">
-
-                  </div>
+                  <div className="detail-user"></div>
                   <div className="detail-user">
                     <div className="name">Username</div>
-                    <div>นามสกุล 3</div>
+                    <div>{formData.username}</div>
                   </div>
                   <div className="detail-user">
                     <div className="name">Password</div>
-                    <div>นามสกุล 4</div>
+                    <div>*******</div>
                   </div>
                 </div>
                 <button className="right-border-button" onClick={goEdit}>
-                  Edit profile 
+                  Edit profile
                 </button>
               </div>
               <hr />

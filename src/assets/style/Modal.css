@@ -4,13 +4,14 @@
 
 .btn-modal {
     display: flex;
-    font-size: 24px;
+    font-size: 32px;
     padding-left: 10px;
     cursor: pointer;
 }
 .marginauto{
     margin: 0 auto;
 }
+
 
 .modal, .modal-overlay {
     width: 100vw;
@@ -32,15 +33,10 @@
     transform: translate(-50%, -50%);
     line-height: 1.4;
     background: #011323;
-    padding: 14px 28px;
-    border-radius: 3px;
+    padding: 14px 40px;
+    border-radius: 10px;
     max-width: 600px;
     min-width: 300px;
 }
 
-.close-modal {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    padding: 5px 7px;
-}
+/* warning modal */

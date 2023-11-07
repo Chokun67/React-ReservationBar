@@ -4,10 +4,13 @@ import Navi from "../components/navi.jsx";
 import Corousel from "../components/corousel";
 import Footer from "../components/footer";
 import logomain from "../assets/image/pic.png";
+import { useCookies } from 'react-cookie';
 
 function Home() {
-  const [count, setCount] = useState(0);
-
+  const [cookies, setCookie, removeCookie] = useCookies(['token']);
+  const printtoken = () => {
+    console.log(cookies.token);
+  };
   return (
     <>
       <div className="full-screen-bg">
@@ -40,6 +43,7 @@ function Home() {
         <div className="left-pane">
           <h1>FEATURES</h1>
           <p>Reservation for tables <br/>Request for music</p>
+          <button onClick={printtoken}>test1</button>
         </div>
         <div className="right-pane">
           <Corousel />

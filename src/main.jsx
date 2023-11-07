@@ -1,50 +1,90 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+import React from "react";
+import ReactDOM from "react-dom/client";
 // import App from './App.jsx'
-import './index.css'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import Home from './pages/Home.jsx'
-import Signin from './pages/login.jsx'
-import User from './pages/User.jsx'
-import Reserve from './pages/Reserve.jsx'
-import Music from './pages/music.jsx' 
-import Editprofile from './pages/editprofile.jsx'
-import Payment from './pages/payment' 
+import "./index.css";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Home from "./pages/Home.jsx";
+import Signin from "./pages/login.jsx";
+import User from "./pages/User.jsx";
+import Reserve from "./pages/Reserve.jsx";
+import Music from "./pages/music.jsx";
+import Editprofile from "./pages/editprofile.jsx";
+import Payment from "./pages/payment";
+import Receipt from "./components/receipt";
+import Status from "./pages/Status";
+import Refund from "./components/Refund";
+import Tapsmain from "./pages/admin/Taps";
+import { CookiesProvider } from 'react-cookie';
+import MusicDashboard from "./pages/admin/music.jsx";
+import UserDashboard from "./pages/admin/User.jsx";
+import DetailReserve from "./pages/admin/Detailreserve.jsx";
+
+
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home/>
+    element: <Home />,
   },
   {
     path: "login",
-    element: <Signin/>
+    element: <Signin />,
   },
   {
     path: "user",
-    element: <User/>
+    element: <User />,
   },
   {
     path: "reserve",
-    element: <Reserve/>
+    element: <Reserve />,
   },
   {
     path: "music",
-    element: <Music/>
+    element: <Music />,
   },
   {
     path: "Editprofile",
-    element: <Editprofile/>
+    element: <Editprofile />,
   },
   {
-    path: "payment",
-    element: <Payment/>
-  }
-]
-);
+    path: "payment/:id1/:id2",
+    element: <Payment />,
+  },
+  {
+    path: "receipt/:id1/:id2/:id3",
+    element: <Receipt />,
+  },
+  {
+    path: "reserve/status",
+    element: <Status />,
+  },
+  {
+    path: "reserve/refund",
+    element: <Refund />,
+  },
+  {
+    path: "admin/reserve",
+    element: <Tapsmain />,
+  },
+  {
+    path: "admin/music",
+    element: <MusicDashboard />,
+  },
+  {
+    path: "admin/user",
+    element: <UserDashboard />,
+  },
+  {
+    path:"admin/reserve/detail",
+    element: <DetailReserve />
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+  }
+]);
+
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router}/>
-  </React.StrictMode>,
-)
+    <CookiesProvider defaultSetOptions={{ path: "/" }}>
+      <RouterProvider router={router} />
+    </CookiesProvider>
+  </React.StrictMode>
+);

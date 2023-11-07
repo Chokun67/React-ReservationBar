@@ -1,0 +1,72 @@
+.status-box{
+    width: 60rem; /* ปรับความกว้างตามที่คุณต้องการ */
+    height: 30rem; /* ปรับความสูงตามที่คุณต้องการ */
+    border-radius: 20px;
+    margin-top: 100px;
+    background-color: white;
+    color: black;
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th {
+    border-bottom: 4px solid #888585;
+    text-align: center;
+    padding: 20px;
+  }
+  td {
+    text-align: center;
+    padding-top: 20px;
+  }
+  
+/*///////// Refund //////////////*/
+.Refund-box{
+    width: 25rem; /* ปรับความกว้างตามที่คุณต้องการ */
+    height: 20rem; /* ปรับความสูงตามที่คุณต้องการ */
+    border-radius: 20px;
+    margin-top: 100px;
+    background-color: white;
+    color: black;
+    padding: 20px;
+  }
+
+  .refund-form {
+    margin-top: 10px;
+    background-color: #ffffff;
+    width: 100%; /* กว้างเต็ม .refund-container */
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+  }
+  
+  
+  .refund-form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 18px;
+  }
+  
+  .refund-form input {
+    display: flex;
+    margin-bottom: 25px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    width: 90%;
+    flex:1;
+  }
+  @media screen and (max-width: 600px){
+    .Refund-box{
+        width: 75%; /* ปรับความกว้างตามที่คุณต้องการ */
+        height: 20rem; /* ปรับความสูงตามที่คุณต้องการ */
+        border-radius: 20px;
+        margin-top: 60px;
+        background-color: white;
+        color: black;
+        padding: 20px;
+      }
+  }

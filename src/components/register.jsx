@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "../assets/style/register.css";
-import logo from "../assets/image/logo.png";
-import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
+import { API } from '../assets/api/authen';
+
 function Signup() {
   const [formData, setFormData] = useState({
     firstName: "",
@@ -10,7 +10,7 @@ function Signup() {
     gender: "",
     username: "",
     password: "",
-    telephone: "",
+    phone: "",
     birthday: "",
   });
 
@@ -21,8 +21,27 @@ function Signup() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // ส่งข้อมูลฟอร์มไปยังเซิร์ฟเวอร์หรือทำอย่างอื่นตามต้องการ
-    console.log(formData);
+    const formattedBirthday = new Date(formData.birthday).toISOString().split('T')[0];
+    formData.birthday = formattedBirthday;
+
+    const fullName = formData.firstName && formData.lastName ? `${formData.firstName} ${formData.lastName}` : null;
+    const finalFormData = { ...formData };
+    if (fullName) {
+      finalFormData.name = fullName;
+      delete finalFormData.firstName;
+      delete finalFormData.lastName;
+    }
+
+    console.log(finalFormData);
+    API.postUserData(finalFormData)
+      .then((response) => {
+        console.log('POST Response:', response.data);
+        // ทำอะไรก็ตามหลังจาก POST เสร็จสิ้น
+      })
+      .catch((error) => {
+        console.error('POST Error:', error);
+        // จัดการข้อผิดพลาด
+      });
   };
 
   return (
@@ -30,7 +49,7 @@ function Signup() {
       <div className="re-right-half">
             <div className="regis-container">
               <h1>Register</h1>
-              <form className="login-form">
+              <form className="login-form" onSubmit={handleSubmit}>
                 <div className="name-container">
                   <div>
                     <label>First Name:</label>
@@ -54,12 +73,14 @@ function Signup() {
                 <div className="name-container">
                   <div>
                     <label>Gender:</label>
-                    <input
-                      type="text"
-                      name="gender"
-                      value={formData.gender}
-                      onChange={handleChange}
-                    />
+                    <select
+                  name="gender"
+                  value={formData.gender}
+                  onChange={handleChange}>
+                  <option value="ชาย">ชาย</option>
+                  <option value="หญิง">หญิง</option>
+                  <option value="อื่นๆ">อื่นๆ</option>
+                </select>
                   </div>
                   <div>
                     <label>Birthday:</label>
@@ -72,11 +93,11 @@ function Signup() {
                   </div>
                 </div>
                 <div>
-                  <label>Telephone:</label>
+                  <label>telephone:</label>
                   <input
                     type="text"
-                    name="telephone"
-                    value={formData.telephone}
+                    name="phone"
+                    value={formData.phone}
                     onChange={handleChange}
                   />
                 </div>

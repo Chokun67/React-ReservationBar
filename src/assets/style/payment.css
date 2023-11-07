@@ -1,6 +1,6 @@
 .payment-box{
     width: 30vw; /* ปรับความกว้างตามที่คุณต้องการ */
-    height: 40vh; /* ปรับความสูงตามที่คุณต้องการ */
+    height: 220px; /* ปรับความสูงตามที่คุณต้องการ */
     border: 5px solid #FF53C0; /* สีเส้นขอบสีม่วง */
     padding: 70px; /* ระยะขอบภายใน */
     border-radius: 30px;
@@ -33,9 +33,19 @@
 }
 .select-bottle label{
     font-size: 20px;
-    padding-top: 20px;
+    padding-top: 40px;
 }
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 1024px) {
+    .payment-box{
+        width: 50vw; /* ปรับความกว้างตามที่คุณต้องการ */
+        height: 40vh; /* ปรับความสูงตามที่คุณต้องการ */
+        border: 5px solid #FF53C0; /* สีเส้นขอบสีม่วง */
+        padding: 40px; /* ระยะขอบภายใน */
+        border-radius: 30px;
+        margin-top: 20px;
+    }
+  }
+@media screen and (max-width: 560px) {
     .payment-box{
         width: 80vw; /* ปรับความกว้างตามที่คุณต้องการ */
         height: 40vh; /* ปรับความสูงตามที่คุณต้องการ */
@@ -44,4 +54,24 @@
         border-radius: 30px;
         margin-top: 20px;
     }
+  }
+
+/* -------receipt-------------- */
+.receipt-box{
+    width: 300px; /* ปรับความกว้างตามที่คุณต้องการ */
+    height: 360px; /* ปรับความสูงตามที่คุณต้องการ */
+    border: 5px solid #FF53C0; /* สีเส้นขอบสีม่วง */
+    padding: 40px; /* ระยะขอบภายใน */
+    border-radius: 30px;
+    margin-top: 20px;
+}
+.inputStyle{
+    background: transparent;
+    color:  white;
+    padding: 10px ;
+    border-radius: 5px;
+    border: 4px dashed white; 
+    cursor: pointer;
+    width: 15rem;
+    max-width: 100%;
   }

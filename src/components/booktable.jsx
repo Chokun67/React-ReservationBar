@@ -1,13 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect} from 'react';
 import "../assets/style/booktable.css";
 import image1 from '../assets/image/image1.png';
 import image2 from '../assets/image/image2.png';
 import image3 from '../assets/image/image3.png';
-import Slide from '../components/bottomsheet.jsx'
+import Slide from '../components/bottomsheet.jsx';
+import { API } from '../assets/api/authen';
+import { useCookies } from 'react-cookie';
 
-function Table() {
+function Table({ selectedDate }) {
   const [prohibitBoxes, setProhibitBoxes] = useState([true,false,false,false,false,false,false,false,false])
   const [selectedBoxes, setSelectedBoxes] = useState(Array(10).fill(false));
+  const [cookies, setCookie, removeCookie] = useCookies(['token']);
+  useEffect(() => {
+    API.fetchTableData(cookies.token).then((response) => {
+      console.log('POST Response:', response.data);
+    })
+    .catch((error) => {
+      console.error('POST Error:', error);
+    });
+  }, []);
 
   const handleBoxClick = (boxIndex) => {
     if (prohibitBoxes[boxIndex]) {
@@ -36,7 +47,6 @@ function Table() {
         </div>
       );
     }
-
     return boxes;
   };
 
@@ -44,7 +54,7 @@ function Table() {
     <div className="table-page">
       <div className="table-container">{renderBoxes()}</div>
       {selectedBoxes.some((isSelected) => isSelected) && (
-          <Slide selectedBoxes={selectedBoxes} />
+          <Slide selectedBoxes={selectedBoxes} selectedDate={selectedDate} />
         )}
     </div>
   );

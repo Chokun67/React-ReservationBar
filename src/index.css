@@ -22,6 +22,9 @@
 .flex-part1{
   flex:1
 }
+.flex-part2{
+  flex:2
+}
 .flex-part3{
   flex:3
 }
@@ -49,6 +52,7 @@
   margin-top: 10px;
   font-family: 'Orbitron', sans-serif;
   font-size: medium;
+  max-height: 40px;
 }
 
 .right-border-button{
@@ -63,6 +67,7 @@
   margin-top: 10px;
   font-family: 'Orbitron', sans-serif;
   font-size: medium;
+  max-height: 40px;
 }
 /* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;

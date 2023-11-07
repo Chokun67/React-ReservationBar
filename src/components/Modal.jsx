@@ -23,16 +23,16 @@ export default function Modal() {
           <div onClick={toggleModal} className="modal-overlay"></div>
           <div className="modal-content">
             <AiOutlineQuestionCircle className="btn-modal marginauto" />
-            <h1>Reguration</h1>
-            <ul className="howto">
-              <li>1.วอเตอร์ธัมโมเวสต์รันเวย์วีเจแป๋ว</li>
-              <li>2.ราชานุญาตคาปูชิโนสคริปต์ฮ่องเต้ซูเอี๋ย</li>
-              <li>3.มือถือเรซิ่นโปรเจ็คแม็กกาซีน</li>
-              <li>4.วาทกรรมแฮปปี้ยนตรกรรมด็อกเตอร์</li>
-            </ul>
-            <button className="close-modal" onClick={toggleModal}>
-              CLOSE
-            </button>
+            <h1>REGULATIONS</h1>
+
+            <p className="howto">
+              1.If you cancel 1 or 2 day before your <br />
+              reservation date, we will transfer back your
+              <br /> money full amount.
+              <br />
+              2.Otherwise, we will deduct those money as <br />
+              cancellation charges.
+            </p>
           </div>
         </div>
       )}

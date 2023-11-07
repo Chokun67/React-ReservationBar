@@ -3,16 +3,27 @@ import Navi from "../components/navi.jsx";
 import "../assets/style/music.css";
 import "../assets/style/payment.css";
 import image1 from "../assets/image/image1.png";
+import { useNavigate,useParams } from 'react-router-dom';
 import { AiOutlineArrowLeft,AiOutlineArrowRight } from 'react-icons/ai';
 function Payment() {
   const [selectedTime, setSelectedTime] = useState("1");
   const [selectedBottle, setSelectedBottle] = useState("1");
+  const { id1 , id2} = useParams();
+  console.log(id1);
+  console.log(id2);
 
-  const handleDropdownChange = (event) => {
-    setSelectedTime(event.target.value);
-  };
+  // const handleDropdownChange = (event) => {
+  //   setSelectedTime(event.target.value);
+  // };
   const handleDropdownChange2 = (event) => {
     setSelectedBottle(event.target.value);
+  };
+  const navigate = useNavigate();
+  const goPayment = () => {
+    navigate(`/receipt/${id1}/${id2}/${selectedBottle}`);
+  };
+  const handleGoBack = () => {
+    navigate(-1);
   };
   return (
     <>
@@ -30,7 +41,7 @@ function Payment() {
                   <p className="flex-part1">aaaa</p>
                 </div>
               </div>
-              <div className="flex-part1 select-time">
+              {/* <div className="flex-part1 select-time">
                 <label htmlFor="number">Time:</label>
                 <select
                   id="number"
@@ -45,7 +56,7 @@ function Payment() {
                   <option value="7">7</option>
                   <option value="8">8</option>
                 </select>
-              </div>
+              </div> */}
               <div className="flex-part1 select-bottle">
                 <label htmlFor="number">A bottle of liquor for reservation::</label>
                 <select
@@ -64,8 +75,8 @@ function Payment() {
                 </select>
               </div>
               <div className="flex-part1 flex-between">
-                <button className="right-border-button"><AiOutlineArrowLeft/> Back</button>
-                <button className="left-border-button">Next<AiOutlineArrowRight/> </button>
+                <button className="right-border-button" onClick={handleGoBack}><AiOutlineArrowLeft/> Back</button>
+                <button className="left-border-button" onClick={goPayment}>Next<AiOutlineArrowRight/> </button>
               </div>
             </div>
           </div>

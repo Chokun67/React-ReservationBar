@@ -1,0 +1,46 @@
+.tab {
+    overflow: hidden;
+    background-color: #465179;
+    width: fit-content;
+    border-radius: 20px 20px 0 0;
+  }
+  
+  /* Style the buttons inside the tab */
+  .tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+    border-radius: 20px 20px 0 0;
+    color: white;
+  }
+  
+  /* Create an active/current tablink class */
+  .tab button.active {
+    background-color: #111C44;
+  }
+  
+  /* Style the tab content */
+  .tabcontent {
+    display: none;
+    border-top: none;
+  }
+  .tapactive{
+    display: flex;
+  }
+  .box-tap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin-top: 100px;
+  }
+
+  

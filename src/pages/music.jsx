@@ -5,18 +5,33 @@ import { FaYoutube } from "react-icons/fa";
 import { AiOutlineCheck } from "react-icons/ai";
 import { BsMusicNote ,BsFillPersonFill} from "react-icons/bs";
 import headphone from "../assets/image/headphone.png";
+import { API } from '../assets/api/authen';
+import { useCookies } from 'react-cookie';
 
 function Music() {
   const [formData, setFormData] = useState({
-    song: "",
-    artist: "",
-    youtube: "",
+    name_song: "",
+    url: "",
+    message: "",
+    
   });
-
+  const [cookies, setCookie, removeCookie] = useCookies(['token']);  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    API.requestMusic(cookies.token,formData)
+      .then((response) => {
+        console.log('POST Response:', response.data);
+      })
+      .catch((error) => {
+        console.error('POST Error:', error);
+      });
+  };
+
   return (
     <>
       <div className="full-screen-bg-music">
@@ -25,6 +40,7 @@ function Music() {
           <div className="boxcenter">
             <h1>REQUEST FOR MUSIC</h1>
             <div className="musicbox flex-column">
+              <form onSubmit={handleSubmit}>
               <div className="top">
                 <div className="phone">
                   <img src={headphone} alt="Your Logo" />
@@ -36,12 +52,12 @@ function Music() {
                       <BsMusicNote className="icons-top" />
                     </div>
                     <div className="right">
-                      <label htmlFor="song">song:</label>
+                      <label htmlFor="song">Song:</label>
                       <input
                         type="text"
                         id="song"
-                        name="song"
-                        value={formData.song}
+                        name="name_song"
+                        value={formData.name_song}
                         onChange={handleChange}
                       />
                     </div>
@@ -55,8 +71,8 @@ function Music() {
                       <input
                         type="text"
                         id="artist"
-                        name="artist"
-                        value={formData.artist}
+                        name="message"
+                        value={formData.message}
                         onChange={handleChange}
                       />
                     </div>
@@ -72,17 +88,18 @@ function Music() {
                   <input
                     type="text"
                     id="youtube"
-                    name="youtube"
-                    value={formData.youtube}
+                    name="url"
+                    value={formData.url}
                     onChange={handleChange}
                   />
                 </div>
               </div>
               <div className="bottom">
-                <button className="left-border-button">
+                <button className="left-border-button" type="submit">
                   confirm <AiOutlineCheck />
                 </button>
               </div>
+              </form>
             </div>
           </div>
         </div>
