@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "../../assets/style/admins/Status.css";
-
+import { API } from '../../assets/api/authen';
+import { useCookies } from 'react-cookie';
 
 function StatusAdmin() {
+  const [reservationData, setReservationData] = useState([]);
+  const [cookies, setCookie, removeCookie] = useCookies(['token']);
   const navigate = useNavigate();
   const handleGoURL = () => {
     navigate("/reserve/refund");
@@ -12,6 +14,19 @@ function StatusAdmin() {
   const handleGoBack = () => {
     navigate(-1); // ใช้ useNavigate เพื่อย้อนกลับไป URL ก่อนหน้า
   };
+  useEffect(() => {
+    fetchReservationData();
+  }, []);
+
+  API.fetchReservationData(token)
+    .then((response) => {
+      // หากการร้องขอสำเร็จ, จะมีข้อมูลอยู่ใน response.data
+      setReservationData(response.data);
+    })
+    .catch((error) => {
+      console.error('เกิดข้อผิดพลาดในการดึงข้อมูล:', error);
+    });
+
 
   return (
     <>

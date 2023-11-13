@@ -17,33 +17,30 @@ function Receipt() {
   };
 
   const handleGoBack = () => {
-    navigate(-1); // ใช้ useNavigate เพื่อย้อนกลับไป URL ก่อนหน้า
+    navigate(-1); 
   };
 
   const handleFileChange = (event) => {
-    // const file = event.target.files[0]; // รับไฟล์ที่ผู้ใช้เลือก
-    // setSelectedFile(file);
-  const file = event.target.files[0]; // รับไฟล์ที่ผู้ใช้เลือก
-  const reader = new FileReader();
-  reader.onload = (e) => {
-    const binaryImage = e.target.result; // รูปภาพในรูปแบบ binary (base64)
-    setSelectedFile(binaryImage);
-    console.log(binaryImage);
-  };
-  reader.readAsDataURL(file); // อ่านและแปลงรูปภาพเป็น binary
+    const file = event.target.files[0]; // รับไฟล์ที่ผู้ใช้เลือก
+    setSelectedFile(file);
+  // const file = event.target.files[0]; // รับไฟล์ที่ผู้ใช้เลือก
+  // const reader = new FileReader();
+  // reader.onload = (e) => {
+  //   const binaryImage = e.target.result; // รูปภาพในรูปแบบ binary (base64)
+  //   setSelectedFile(binaryImage);
+  // };
+  // reader.readAsDataURL(file); // อ่านและแปลงรูปภาพเป็น binary
 };
 
   const confirmTable=() =>{
     console.log(id3);
     console.log(id2);
-    console.log(selectedFile);
-    API.reserveTable(cookies.token,selectedFile,id3,"UMsYhosBaGEPaVNVi4eB","2023-6-11")
+    API.reserveTable(cookies.token,selectedFile,id3,"UMsYhosBaGEPaVNVi4eB","2023-08-12")
       .then((response) => {
         console.log('POST Response:', response.data);
       })
       .catch((error) => {
         console.error('POST Error:', error);
-        // จัดการข้อผิดพลาด
       });
   };
 

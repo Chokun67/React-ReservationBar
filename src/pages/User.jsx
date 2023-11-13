@@ -16,6 +16,7 @@ function User() {
     telephone: "",
     birthday: "",
   });
+  const [myReserve, setMyReserve] = useState([]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -50,6 +51,15 @@ function User() {
       })
       .catch((error) => {
         console.error("POST Error:", error);
+      }),
+
+      API.getMyReservation(cookies.token)
+      .then((response) => {
+        console.log("POST Resrvation:", response.data);
+        // setMyReserve({});
+      })
+      .catch((error) => {
+        console.error("POST Error:", error);
       });
   }, []);
 
@@ -64,8 +74,8 @@ function User() {
                 <div className="profilepic">
                   <img src={profile} alt="Your profile" />
                 </div>
-                <div>Satoru Gojo</div>
-                <div>@thehonoredgojo</div>
+                <div className="orbiton">Satoru Gojo</div>
+                <div className="orbiton">@thehonoredgojo</div>
                 <div className="grid-user">
                   <div className="detail-user">
                     <div className="name">First Name:</div>

@@ -96,7 +96,7 @@ function Music() {
               </div>
               <div className="bottom">
                 <button className="left-border-button" type="submit">
-                  confirm <AiOutlineCheck />
+                  Confirm <AiOutlineCheck />
                 </button>
               </div>
               </form>

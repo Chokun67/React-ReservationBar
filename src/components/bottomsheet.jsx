@@ -16,7 +16,7 @@ function BottomSheet( props ) {
   const formattedDate = new Intl.DateTimeFormat('en-US', { day: '2-digit', month: '2-digit', year: 'numeric' }).format(currentDate);
   const navigate = useNavigate();
   const goPayment = () => {
-    console.log(`${props.selectedBoxe},${props.selectedDate}`)
+    console.log(`${props.selectedBoxes},${props.selectedDate}`)
     navigate(`/payment/${props.selectedBoxes}/${props.selectedDate}`);
   };
 
@@ -29,8 +29,8 @@ function BottomSheet( props ) {
             <div className="slidebottom">
               <p>Table:</p>
               {props.selectedBoxes.map(
-                (isSelected, index) =>
-                  isSelected && <p key={index}>{index + 1}, </p>
+                (_, index) =>
+                  <p key={index}>{index + 1}, </p>
               )}
             </div>
           </div>

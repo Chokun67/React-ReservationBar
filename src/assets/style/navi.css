@@ -44,16 +44,17 @@ header {
     box-shadow: 0 0 20px rgba(228, 135, 216, 0.5);
   }
   
-  ul {
+  nav ul {
     list-style: none;
     display: flex;
     justify-content: space-between;
   }
   
-  ul li {
+  nav ul li {
     margin-right: 80px;
+    font-family: 'Orbitron', sans-serif;
   }
-  ul li:hover{
+  nav ul li:hover{
     text-shadow: 0 0 10px rgb(19, 213, 216), 0 0 20px rgb(19, 213, 216), 0 0 30px rgb(19, 213, 216), 0 0 40px rgb(19, 213, 216), 0 0 50px rgb(19, 213, 216);
   }
   
@@ -77,6 +78,7 @@ header {
   .auth-buttons div a{
       text-decoration: none;
       color: white;
+      font-family: 'Orbitron', sans-serif;
   }
 
   .auth-buttons div:hover{

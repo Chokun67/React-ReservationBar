@@ -1,13 +1,9 @@
-// api.js
-
 import axios from "axios"; // นำเข้า Axios library
 
-const API_URL = "http://10.32.97.113:7000/api-customer";
-// const headers = {
-//   'Content-Type': 'application/json',
-// };
+const API_URL = "http://10.32.71.50:7000/api-customer";
 
 export const API = {
+
   postUserData: (data) => {
     const apiUrl = `${API_URL}/secret/member/register`;
     const headers = {
@@ -52,8 +48,8 @@ export const API = {
     };
     return axios.put(apiUrl, data, { headers });
   },
+
   reserveTable: (token,image,drinkId,tableId,arrivalDate) => {
-    
     const formData = new FormData();
     formData.append('statement', image);
     formData.append('drink_id', drinkId);
@@ -69,12 +65,24 @@ export const API = {
     const apiUrl = `${API_URL}/bar/table/reservation`;
     
     return axios.post(apiUrl, formData, config)
-    .then((response) => {
-      console.log('POST สำเร็จ:', response.data);
-    })
-    .catch((error) => {
-      console.error('POST ผิดพลาด:', error);
+  },
+
+  getMyReservation: (token) => {
+    const customHeaders = {
+      Authorization: `Bearer ${token}`,
+    };
+    return axios.get(`${API_URL}/bar/table/get-my-reservation`, {
+      headers: customHeaders,
     });
   },
+
+  fetchDetailReservation: (token) => {
+    const customHeaders = {
+      Authorization: `Bearer ${token}`,
+    };
+    return axios.get(`${API_URL}/bar/table/get-detail-reservation`, {
+      headers: customHeaders,
+    });
+  }
 
 };

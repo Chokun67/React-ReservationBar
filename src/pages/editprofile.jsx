@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../assets/style/user.css";
 import Navi from "../components/navi.jsx";
+import { AiOutlineCheck } from "react-icons/ai";
 import profile from "../assets/image/profile.png";
 function Edituser() {
   const [formData, setFormData] = useState({
@@ -11,6 +12,7 @@ function Edituser() {
     password: "",
     telephone: "",
     birthday: "",
+    confirmpassword:""
   });
 
   const handleChange = (e) => {
@@ -31,76 +33,95 @@ function Edituser() {
           <Navi />
           <div className="boxcenter">
             <div className="user-box flex-between">
-              <div className="form-user">
-                <div className="form-row">
-                  <div className="form-group">
-                    <label htmlFor="first-name">First Name</label>
+            <form className="edit-form" onSubmit={handleSubmit}>
+                <div className="name-container">
+                  <div>
+                    <label>First Name:</label>
                     <input
                       type="text"
-                      id="first-name"
-                      placeholder="Enter first name"
+                      name="firstName"
+                      value={formData.firstName}
+                      onChange={handleChange}
                     />
                   </div>
-                  <div className="form-group">
-                    <label htmlFor="last-name">Last Name</label>
+                  <div>
+                    <label>Last Name:</label>
                     <input
                       type="text"
-                      id="last-name"
-                      placeholder="Enter last name"
+                      name="lastName"
+                      value={formData.lastName}
+                      onChange={handleChange}
                     />
                   </div>
                 </div>
-                <div className="form-row">
-                  <div className="form-group">
-                    <label htmlFor="gender">Gender</label>
-                    <select id="gender">
-                      <option value="male">Male</option>
-                      <option value="female">Female</option>
-                      <option value="other">Other</option>
-                    </select>
+                <div className="name-container">
+                  <div>
+                    <label>Gender:</label>
+                    <select
+                  name="gender"
+                  className="selectGender"
+                  value={formData.gender}
+                  onChange={handleChange}>
+                  <option value="ชาย">ชาย</option>
+                  <option value="หญิง">หญิง</option>
+                  <option value="อื่นๆ">อื่นๆ</option>
+                </select>
                   </div>
-                  <div className="form-group">
-                    <label htmlFor="birthday">Birthday</label>
-                    <input type="date" id="birthday" />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="tel-number">Tel. Number</label>
+                  <div>
+                    <label>Birthday:</label>
                     <input
-                      type="tel"
-                      id="tel-number"
-                      placeholder="Enter telephone number"
+                      type="date"
+                      name="birthday"
+                      value={formData.birthday}
+                      onChange={handleChange}
                     />
                   </div>
                 </div>
-                <div className="form-row">
-                  <div className="form-group">
-                    <label htmlFor="username">Username</label>
-                    <input
-                      type="text"
-                      id="username"
-                      placeholder="Enter username"
-                    />
-                  </div>
+               <div className="name-container">
+               <div>
+                  <label>telephone:</label>
+                  <input
+                    type="text"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                  />
                 </div>
-                <div className="form-row">
-                  <div className="form-group">
-                    <label htmlFor="password">Password</label>
-                    <input
-                      type="password"
-                      id="password"
-                      placeholder="Enter password"
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="confirm-password">Confirm Password</label>
-                    <input
-                      type="password"
-                      id="confirm-password"
-                      placeholder="Confirm password"
-                    />
-                  </div>
+                <div>
+                  <label>Username:</label>
+                  <input
+                    type="text"
+                    name="username"
+                    value={formData.username}
+                    onChange={handleChange}
+                  />
                 </div>
-              </div>
+               </div>
+                <div className="textleft">
+                  <label>Password:</label>
+                  <input
+                    type="password"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="textleft">
+                  <label>ConfirmPassword:</label>
+                  <input
+                    type="password"
+                    name="confirmpassword"
+                    value={formData.confirmpassword}
+                    onChange={handleChange}
+                  />
+                </div>
+
+                <div className="bottom">
+                <button type="submit" className="left-border-button">
+                  confirm <AiOutlineCheck/>
+                </button>
+                </div>
+              </form>
             </div>
           </div>
         </div>

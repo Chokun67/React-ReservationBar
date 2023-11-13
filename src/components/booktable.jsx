@@ -11,14 +11,17 @@ function Table({ selectedDate }) {
   const [prohibitBoxes, setProhibitBoxes] = useState([true,false,false,false,false,false,false,false,false])
   const [selectedBoxes, setSelectedBoxes] = useState(Array(10).fill(false));
   const [cookies, setCookie, removeCookie] = useCookies(['token']);
+  const [testTable, settestTable] = useState([])
+
   useEffect(() => {
     API.fetchTableData(cookies.token).then((response) => {
       console.log('POST Response:', response.data);
+      settestTable(response.data);
     })
     .catch((error) => {
       console.error('POST Error:', error);
     });
-  }, []);
+  }, [selectedDate]);
 
   const handleBoxClick = (boxIndex) => {
     if (prohibitBoxes[boxIndex]) {
@@ -54,7 +57,9 @@ function Table({ selectedDate }) {
     <div className="table-page">
       <div className="table-container">{renderBoxes()}</div>
       {selectedBoxes.some((isSelected) => isSelected) && (
-          <Slide selectedBoxes={selectedBoxes} selectedDate={selectedDate} />
+          <Slide selectedBoxes={testTable
+            .filter((_, index) => selectedBoxes[index])
+            .map(obj => obj._id)} selectedDate={selectedDate} />
         )}
     </div>
   );

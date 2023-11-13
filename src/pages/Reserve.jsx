@@ -25,6 +25,7 @@ function Reserve() {
     }
     setDateOptions(options);
     setSelectedDate(options[0]); // เลือกวันที่แรกเป็นค่าเริ่มต้น
+    
   }, []);
   function formatDateString(dateString) {
     const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
@@ -63,7 +64,6 @@ function Reserve() {
                 >
                   {dateItems}
                 </select>
-                {selectedDate && <p>คุณเลือกวันที่: {selectedDate}</p>}
               </div>
               <div className="stage">Stage</div>
               <BookTable selectedDate={formatDateString(selectedDate)}/>

@@ -1,5 +1,21 @@
  /* css use in any component */
- 
+ @import url('https://fonts.googleapis.com/css2?family=Orbitron&family=Poppins:wght@200&family=Urbanist:wght@200&display=swap');
+ p{
+  font-family: 'Urbanist', sans-serif;
+ }
+ h2{
+  font-family: 'Orbitron', sans-serif;
+ }
+ label{
+  font-family: 'Poppins', sans-serif;
+ }
+ .name{
+  font-family: 'Urbanist', sans-serif;
+ }
+ .orbiton{
+  font-family: 'Orbitron', sans-serif;
+  font-size: small;
+ }
  .flex-between{
   display: flex;
   justify-content: space-around;
@@ -38,6 +54,9 @@
   align-items: center;
   text-align: center; 
   color: white;
+}
+.textleft{
+  text-align: left;
 }
 
 .left-border-button{

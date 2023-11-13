@@ -17,6 +17,10 @@
     flex: 2;
     align-items: center; 
 }
+.right-user ul li{
+  font-family: 'Urbanist', sans-serif;
+  margin-right: 40px;
+}
 
 .user-box hr{
     border: 3px solid #7BDAFB;
@@ -56,38 +60,31 @@
     font-weight: bold;
   }
 
-  .form-user {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-  }
+
+
+/*////////////////////////// edit user //////////////////////////*/
+.edit-form{
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+.selectGender{
+  background-color: #D9D9D9;
+  border: none;
+  width: 100%;
+  padding: 7px 0;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: medium;
+}
+.name-container{
+  text-align: left;
+}
+
   
-  .form-row {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin-bottom: 10px;
-    border-style: dashed;
-  }
+
   
-  .form-group {
-    flex: 1;
-    margin-right: 10px;
-  }
   
-  label {
-    display: block;
-    font-weight: bold;
-  }
-  
-  input,
-  select {
-    width: 100%;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-  }
   
   

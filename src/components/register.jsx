@@ -75,6 +75,7 @@ function Signup() {
                     <label>Gender:</label>
                     <select
                   name="gender"
+                  className="selectGender"
                   value={formData.gender}
                   onChange={handleChange}>
                   <option value="ชาย">ชาย</option>
