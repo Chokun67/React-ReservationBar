@@ -27,11 +27,19 @@ function Reserve() {
     setSelectedDate(options[0]); // เลือกวันที่แรกเป็นค่าเริ่มต้น
     
   }, []);
-  function formatDateString(dateString) {
-    const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', options).replace(/\//g, '-');
-  }
+  function customPadStart(value, length, char) {
+    value = String(value);
+    while (value.length < length) {
+        value = char + value;
+    }
+    return value;
+}
+
+function formatDateString(dateString) {
+    const [month, day, year] = dateString.split('/');
+    const formattedDate = `${year}-${customPadStart(month, 2, '0')}-${customPadStart(day, 2, '0')}`;
+    return formattedDate;
+}
 
   const navigate = useNavigate();
   // รีเnder รายการวันที่ใน dropdown
@@ -40,6 +48,7 @@ function Reserve() {
       {date}
     </option>
   ));
+  
   const flexContainerStyle = {
     display: "flex",
     justifyContent: "center", // จัดจุดกึ่งกลางในแนวนอน
@@ -67,6 +76,14 @@ function Reserve() {
               </div>
               <div className="stage">Stage</div>
               <BookTable selectedDate={formatDateString(selectedDate)}/>
+              <div className="flex-betweencenter">
+              <div className="small-circle"></div>
+              <p>Available</p>
+              <div className="small-circle blue"></div>
+              <p>Reserved</p>
+              <div className="small-circle purple"></div>
+              <p>Selected</p>
+              </div>
               <button className="reserve-button-status" onClick={()=>{navigate('/reserve/status');}}>Check your reservation status</button>
           </div>
         </div>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Navi from "../components/navi.jsx";
 import "../assets/style/payment.css";
-import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
+import { AiOutlineArrowLeft, AiOutlineArrowRight,AiOutlineCheck } from "react-icons/ai";
 import { useNavigate ,useParams} from "react-router-dom";
 import { API } from '../assets/api/authen';
 import { useCookies } from 'react-cookie';
@@ -35,7 +35,7 @@ function Receipt() {
   const confirmTable=() =>{
     console.log(id3);
     console.log(id2);
-    API.reserveTable(cookies.token,selectedFile,id3,"UMsYhosBaGEPaVNVi4eB","2023-08-12")
+    API.reserveTable(cookies.token,selectedFile,id3,id1,id2)
       .then((response) => {
         console.log('POST Response:', response.data);
       })
@@ -77,7 +77,7 @@ function Receipt() {
                 </button>
                 <button className="left-border-button" onClick={confirmTable}>
                   Confirm
-                  <AiOutlineArrowRight />
+                  <AiOutlineCheck />
                 </button>
               </div>
             </div>

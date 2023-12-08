@@ -9,8 +9,6 @@ function Payment() {
   const [selectedTime, setSelectedTime] = useState("1");
   const [selectedBottle, setSelectedBottle] = useState("1");
   const { id1 , id2} = useParams();
-  console.log(id1);
-  console.log(id2);
 
   // const handleDropdownChange = (event) => {
   //   setSelectedTime(event.target.value);
@@ -33,7 +31,7 @@ function Payment() {
           <div className="boxcenter">
             <div className="payment-box flex-column">
               <div className="flex-part1 flex-row">
-                <div className="flex-part1 table-pay">
+                <div className="table-pay">
                   <img src={image1} alt={`table`} />
                 </div>
                 <div className="flex-column flex-part3 detail-table">
@@ -41,29 +39,12 @@ function Payment() {
                   <p className="flex-part1">aaaa</p>
                 </div>
               </div>
-              {/* <div className="flex-part1 select-time">
-                <label htmlFor="number">Time:</label>
-                <select
-                  id="number"
-                  value={selectedTime}
-                  onChange={handleDropdownChange}>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                </select>
-              </div> */}
               <div className="flex-part1 select-bottle">
                 <label htmlFor="number">A bottle of liquor for reservation::</label>
                 <select
                   id="bottle"
                   value={selectedBottle}
-                  onChange={handleDropdownChange2}
-                >
+                  onChange={handleDropdownChange2}>
                   <option value="bottle1">bottle1</option>
                   <option value="bottle2">bottle2</option>
                   <option value="bottle3">bottle3</option>

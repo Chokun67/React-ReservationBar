@@ -1,16 +1,43 @@
 import React, { useState, useEffect } from "react";
 import Navi from "../components/navi.jsx";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
-import { useNavigate } from "react-router-dom";
+import { useNavigate ,useParams} from "react-router-dom";
+import { API } from '../assets/api/authen';
+import { useCookies } from 'react-cookie';
 
 function Refund() {
+  const [cookies, setCookie, removeCookie] = useCookies(['token']);
+  const { id } = useParams();
   const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    accountNumber: "",
+    bankName: "",
+    Payee: "",
+  });
   const handleGoURL = () => {
     navigate("/Refund");
   };
-
   const handleGoBack = () => {
-    navigate(-1); // ใช้ useNavigate เพื่อย้อนกลับไป URL ก่อนหน้า
+    navigate(-1); 
+  };
+  const handleSubmit=()=>{
+    const refundData = {
+      "reservedId": id,
+      "bankAccount": formData
+    }
+    API.user_refund(cookies.token,refundData)
+      .then((response) => {
+        console.log("POST Resrvation:", response.data);
+        navigate(-1);
+      })
+      .catch((error) => {
+        console.error("POST Error:", error);
+      });
+
+  }
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
   };
 
   return (
@@ -26,18 +53,20 @@ function Refund() {
                   <input
                     type="text"
                     id="AccountName"
-                    name="AccountName"
+                    name={formData.Payee}
+                    onChange={handleInputChange}
                     required
                   />
                   <label htmlFor="AccountNumber">AccountNumber:</label>
                   <input
                     type="text"
                     id="AccountNumber"
-                    name="AccountNumber"
+                    name={formData.accountNumber}
+                    onChange={handleInputChange}
                     required
                   />
                   <label htmlFor="Bank">Bank:</label>
-                  <input type="text" id="Bank" name="Bank" required />
+                  <input type="text" id="Bank" name={formData.bankName} onChange={handleInputChange} required />
                 </form>
               </div>
             </div>
@@ -45,7 +74,7 @@ function Refund() {
               <button className="right-border-button">
                 <AiOutlineArrowLeft /> Back
               </button>
-              <button className="left-border-button">Confirm</button>
+              <button className="left-border-button" onClick={handleSubmit}>Confirm</button>
             </div>
           </div>
         </div>

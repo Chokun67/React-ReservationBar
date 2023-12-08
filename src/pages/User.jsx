@@ -51,12 +51,12 @@ function User() {
       })
       .catch((error) => {
         console.error("POST Error:", error);
-      }),
+      });
 
       API.getMyReservation(cookies.token)
       .then((response) => {
-        console.log("POST Resrvation:", response.data);
-        // setMyReserve({});
+        console.log("POST Response:", response.data);
+        setMyReserve(response.data);
       })
       .catch((error) => {
         console.error("POST Error:", error);
@@ -118,7 +118,8 @@ function User() {
                   History
                 </h2>
                 <ul>
-                  <li>24/12/2018: 1 table</li>
+                  
+                  {myReserve.map((item, index) => (<li key={index}>{item.arrival}: 1 table</li>))}
                 </ul>
               </div>
             </div>

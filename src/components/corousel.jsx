@@ -3,6 +3,7 @@ import "../assets/style/corousel.css";
 import music from '../assets/image/music.png';
 import open from '../assets/image/open.png';
 import table from '../assets/image/table.png';
+import { FiArrowLeftCircle,FiArrowRightCircle  } from "react-icons/fi";
 
 function corousel() {
   const [selectedSlide, setSelectedSlide] = useState("s1");
@@ -45,7 +46,8 @@ function corousel() {
   };
   return (
     <div className="corousel">
-        <button className="btn-corou" onClick={handleClickLeft}>ปุ่ม</button>
+      {/* <button className="btn-corou" onClick={handleClickLeft}>ปุ่ม</button> */}
+      <FiArrowLeftCircle className="btn-corou" onClick={handleClickLeft}/>
       <div className="box-corousel">
         <input
           type="radio"
@@ -97,7 +99,7 @@ function corousel() {
           </label>
         </div>
       </div>
-      <button className="btn-corou"onClick={handleClickRight}>ปุ่ม</button>
+      <FiArrowRightCircle className="btn-corou" onClick={handleClickRight}/>
     </div>
   );
 }

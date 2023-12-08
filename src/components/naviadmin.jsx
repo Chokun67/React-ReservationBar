@@ -3,15 +3,14 @@ import "../assets/style/navi.css";
 import logo from "../assets/image/logo.png";
 import { Link } from "react-router-dom";
 
-function navi() {
+function naviadmin() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [login, setLogin] = useState(false);
-  
   return (
     <div className="App">
       <header>
         <nav>
-          <Link to="/">
+          <Link to="/admin">
             <div className="logo">
               <img src={logo} alt="Your Logo" />
               <div className="circle"></div>
@@ -19,19 +18,19 @@ function navi() {
           </Link>
           <ul className={menuOpen ? "open" : ""}>
             <li>
-              <Link to="/reserve">RESERVE</Link>
+              <Link to="/admin/reserve">RESERVE</Link>
             </li>
             <li>
-              <Link to="/music">MUSIC</Link>
+              <Link to="/admin/music">MUSIC</Link>
             </li>
             <li>
-              <Link to="/user">USER</Link>
+              <Link to="/admin/user">USER</Link>
             </li>
           </ul>
-          <div className="menunavi" onClick={() => setMenuOpen(!menuOpen)}>
-            <span className="bar1"></span>
-            <span className="bar2"></span>
-            <span className="bar3"></span>
+          <div className="menu" onClick={() => setMenuOpen(!menuOpen)}>
+            <span></span>
+            <span></span>
+            <span></span>
           </div>
           <div className="auth-buttons">
             <div>
@@ -44,4 +43,4 @@ function navi() {
   );
 }
 
-export default navi;
+export default naviadmin;

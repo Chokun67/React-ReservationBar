@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import "../../assets/style/admins/Taps.css";
-import Navi from "../../components/navi.jsx";
+import Navi from "../../components/naviadmin";
 import StatusAdmin from "./Status";
 import Cancellation from "./Cancellation";
+
 
 function Tabsmain() {
   const [activeTab, setActiveTab] = useState("Reservation"); // กำหนด Tab เริ่มต้นเป็น 'Reservation'
@@ -22,36 +23,27 @@ function Tabsmain() {
               <div className="flex-column">
               <div className="tab">
                 <button
-                  className={`tablinks ${
-                    activeTab == "Reservation" ? "active" : ""
-                  }`}
-                  onClick={() => openTab("Reservation")}
-                >
+                  className={`tablinks ${activeTab == "Reservation" ? "active" : ""}`}
+                  onClick={() => openTab("Reservation")}>
                   Reservation
                 </button>
                 <button
                   className={`tablinks ${activeTab == "Cancellation" ? "active" : ""}`}
-                  onClick={() => openTab("Cancellation")}
-                >
+                  onClick={() => openTab("Cancellation")}>
                   Cancellation
                 </button>
               </div>
-
               <div
                 id="Reservation"
                 className={`tabcontent ${
-                  activeTab === "Reservation" ? "tapactive" : ""
-                }`}
-              >
+                activeTab === "Reservation" ? "tapactive" : ""}`}>
                 <StatusAdmin />
               </div>
-
               <div
                 id="Cancellation"
                 className={`tabcontent ${
-                  activeTab === "Cancellation" ? "tapactive" : ""
-                }`}
-              >
+                activeTab === "Cancellation" ? "tapactive" : ""
+                }`}>
                 <Cancellation/>
               </div>
               </div>

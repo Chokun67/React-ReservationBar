@@ -2,16 +2,29 @@ import React, { useState, useEffect } from "react";
 import Navi from "../components/navi.jsx";
 import "../assets/style/status.css";
 import { useNavigate } from "react-router-dom";
+import { API } from "../assets/api/authen";
+import { useCookies } from 'react-cookie';
 
 function Status() {
   const navigate = useNavigate();
-  const handleGoURL = () => {
-    navigate('/reserve/refund');
+  const [cookies, setCookie, removeCookie] = useCookies(['token']);  
+  const [myReserve, setMyReserve] = useState([]);
+  const handleGoURL = (idReser) => {
+    navigate(`/reserve/refund/${idReser}`);
   };
 
   const handleGoBack = () => {
     navigate(-1); // ใช้ useNavigate เพื่อย้อนกลับไป URL ก่อนหน้า
   };
+  useEffect(() => {
+    API.getMyReservation(cookies.token).then((response) => {
+      console.log('POST Response:', response.data);
+      setMyReserve(response.data);
+    })
+    .catch((error) => {
+      console.error('POST Error:', error);
+    });
+  }, []);
 
   return (
     <>
@@ -28,30 +41,20 @@ function Status() {
                     <th>AMOUNT</th>
                     <th>TIMESTAMP</th>
                     <th>DATE</th>
-                    <th>TIME</th>
                     <th>STATUS</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>ข้อมูล 1</td>
-                    <td>ข้อมูล 2</td>
-                    <td>ข้อมูล 3</td>
-                    <td>ข้อมูล 4</td>
-                    <td>ข้อมูล 5</td>
-                    <td>ข้อมูล 6</td>
-                    <td onClick={handleGoURL}>ข้อมูล 7</td>
-                  </tr>
-                  <tr>
-                  <td>ข้อมูล 1</td>
-                    <td>ข้อมูล 2</td>
-                    <td>ข้อมูล 3</td>
-                    <td>ข้อมูล 4</td>
-                    <td>ข้อมูล 5</td>
-                    <td>ข้อมูล 6</td>
-                    <td>ข้อมูล 7</td>
-          
-                  </tr>
+                {myReserve.map((rowData, index) => (
+              <tr key={index}>
+              <td>{rowData._id}</td>
+              <td>{rowData.table_id}</td>
+              <td>1</td>
+              <td>{rowData.timestamp}</td>
+              <td>{rowData.arrival}</td>
+              <td onClick={()=>handleGoURL(rowData._id)}>{rowData.status}</td>
+              </tr>
+              ))}
                 </tbody>
               </table>
             </div>

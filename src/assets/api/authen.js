@@ -1,10 +1,10 @@
 import axios from "axios"; // นำเข้า Axios library
 
-const API_URL = "http://10.32.71.50:7000/api-customer";
+const API_URL = "http://10.32.99.131:7000/api-customer";
 
 export const API = {
 
-  postUserData: (data) => {
+  user_register: (data) => {
     const apiUrl = `${API_URL}/secret/member/register`;
     const headers = {
       "Content-Type": "application/json",
@@ -29,24 +29,26 @@ export const API = {
     });
   },
 
-  fetchTableData: (token) => {
-    const customHeaders = {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    };
-    return axios.get(`${API_URL}/bar/table/get-table/2020-10-03`, {
-      headers: customHeaders,
-    });
-  },
-  requestMusic: (token,data) => {
-    console.log(token);
-    console.log(data);
-    const apiUrl = `${API_URL}/bar/soung/request`;
+  user_updateinfo: (data,token) => {
+    const apiUrl = `${API_URL}/secret/member/update-personal-infor`;
     const headers = {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     };
-    return axios.put(apiUrl, data, { headers });
+    return axios.put(apiUrl, data, {headers});
+  },
+
+    ////////////// Table Reserve ///////////////////
+
+  fetchTableData: (token,selectedDate) => {
+    const customHeaders = {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    };
+    console.log(selectedDate);
+    return axios.get(`${API_URL}/bar/table/get-table/${selectedDate}`, {
+      headers: customHeaders,
+    });
   },
 
   reserveTable: (token,image,drinkId,tableId,arrivalDate) => {
@@ -55,7 +57,7 @@ export const API = {
     formData.append('drink_id', drinkId);
     formData.append('table_id', tableId);
     formData.append('arrival', arrivalDate);
-    
+    print(arrivalDate);
     const config = {
       headers: {
         'Authorization': `Bearer ${token}`, // เปลี่ยนเป็นโทเคนที่ถูกอนุญาตให้เข้าถึง API ของคุณ
@@ -71,18 +73,50 @@ export const API = {
     const customHeaders = {
       Authorization: `Bearer ${token}`,
     };
-    return axios.get(`${API_URL}/bar/table/get-my-reservation`, {
+    return axios.get(`${API_URL}/bar/table/get-my-reservation/all`, {
       headers: customHeaders,
     });
   },
 
-  fetchDetailReservation: (token) => {
+  getDetailReservation: (token) => {
     const customHeaders = {
       Authorization: `Bearer ${token}`,
     };
     return axios.get(`${API_URL}/bar/table/get-detail-reservation`, {
       headers: customHeaders,
     });
-  }
+  },
+  user_refund: (token,data) => {
+    const apiUrl = `${API_URL}/bar/table/refund-money`;
+    const headers = {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    };
+    return axios.post(apiUrl, data, {headers});
+  },
+
+
+  ////////////// music request ///////////////////
+  requestMusic: (token,data) => {
+    console.log(token);
+    console.log(data);
+    const apiUrl = `${API_URL}/bar/soung/request`;
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    };
+    return axios.put(apiUrl, data, { headers });
+  },
+  
+
+  getpersonalreserved: (token) => {
+    const customHeaders = {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    };
+    return axios.get(`${API_URL}/bar/soung/personal-reserved-status`, {
+      headers: customHeaders,
+    });
+  },
 
 };

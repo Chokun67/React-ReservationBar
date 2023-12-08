@@ -1,5 +1,17 @@
  /* css use in any component */
  @import url('https://fonts.googleapis.com/css2?family=Orbitron&family=Poppins:wght@200&family=Urbanist:wght@200&display=swap');
+ @font-face {
+  font-family: 'Equinoxtest'; /* ชื่อฟ้อนที่คุณต้องการให้ใช้ */
+  src: url('./assets/EquinoxRegular.otf') format('woff2'); /* ที่อยู่ของไฟล์ฟ้อนและรูปแบบของไฟล์ */
+  /* คุณสามารถเพิ่มรูปแบบไฟล์เพิ่มเติมได้ตามต้องการ */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow: auto; /* เพื่อป้องกันการแสดงแถบเลื่อนเมื่อภาพใหญ่เกินขนาดหน้าจอ */
+  font-family: 'Equinoxtest';
+}
  p{
   font-family: 'Urbanist', sans-serif;
  }
@@ -119,30 +131,6 @@ body {
   place-items: center;
   min-width: 320px;
 }
-
-/* h1 {
-  font-size: 3 rem;
-  line-height: 1.1;
-} */
-
-/* button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-} */
 
 @media (prefers-color-scheme: light) {
   :root {

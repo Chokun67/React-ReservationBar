@@ -3,6 +3,7 @@ import "../assets/style/register.css";
 import { FcGoogle } from "react-icons/fc";
 import { API } from '../assets/api/authen';
 
+
 function Signup() {
   const [formData, setFormData] = useState({
     firstName: "",
@@ -21,6 +22,8 @@ function Signup() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if(Object.values(formData).every(value => value !== "")){
+    
     const formattedBirthday = new Date(formData.birthday).toISOString().split('T')[0];
     formData.birthday = formattedBirthday;
 
@@ -33,7 +36,7 @@ function Signup() {
     }
 
     console.log(finalFormData);
-    API.postUserData(finalFormData)
+    API.user_register(finalFormData)
       .then((response) => {
         console.log('POST Response:', response.data);
         // ทำอะไรก็ตามหลังจาก POST เสร็จสิ้น
@@ -42,6 +45,9 @@ function Signup() {
         console.error('POST Error:', error);
         // จัดการข้อผิดพลาด
       });
+    }else{
+      
+    }
   };
 
   return (

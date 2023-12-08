@@ -90,7 +90,7 @@ header {
     display: flex;
     gap: 10px;
   }
-  nav .menu {
+  nav .menunavi {
     display: none;
     position: absolute;
     top: 0.75rem;
@@ -101,20 +101,26 @@ header {
     height: 2rem;
     z-index: 11112;
   }
+  .changebar .bar1 {
+    transform: translate(0, 11px) rotate(-45deg);
+  }
+  .changebar .bar2 {opacity: 0;}
+  .changebar .bar3 {
+    transform: translate(0, -11px) rotate(45deg);
+  }
 
-nav .menu span {
+nav .menunavi span {
     height: 0.4rem;
     width: 100%;
     background-color: #fff;
     border-radius: 0.2rem;
 }
-
-  @media screen and (max-width: 600px){
+@media screen and (max-width: 1000px){
     nav ul{
       display: none;
     }
 
-    nav .menu {
+    nav .menunavi {
       display: flex;
   }
 
@@ -143,16 +149,20 @@ nav .menu span {
 nav ul li {
     width: 100%;
     text-align: center;
-    padding: 20px;
-}
-.logo {
-  max-width: 70px;
+    padding: 20px 0;
 }
 .auth-buttons {
   position: absolute;
     top: 0.75rem;
     right: 4rem;
 }
+}
+  @media screen and (max-width: 600px){
+
+.logo {
+  max-width: 70px;
+}
+
 
   }
   

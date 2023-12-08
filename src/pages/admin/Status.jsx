@@ -1,32 +1,29 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { API } from '../../assets/api/authen';
 import { useCookies } from 'react-cookie';
+import { API_Customer } from '../../assets/api/customer';
 
 function StatusAdmin() {
   const [reservationData, setReservationData] = useState([]);
   const [cookies, setCookie, removeCookie] = useCookies(['token']);
   const navigate = useNavigate();
-  const handleGoURL = () => {
-    navigate("/reserve/refund");
+  const handleGoURL = (index) => {
+    navigate(`/admin/reserve/detail/${index}`);
   };
 
   const handleGoBack = () => {
     navigate(-1); // ใช้ useNavigate เพื่อย้อนกลับไป URL ก่อนหน้า
   };
   useEffect(() => {
-    fetchReservationData();
-  }, []);
-
-  API.fetchReservationData(token)
+    API_Customer.getDetailResevation(cookies.token)
     .then((response) => {
-      // หากการร้องขอสำเร็จ, จะมีข้อมูลอยู่ใน response.data
+      console.log(response.data);
       setReservationData(response.data);
     })
     .catch((error) => {
       console.error('เกิดข้อผิดพลาดในการดึงข้อมูล:', error);
     });
-
+  }, []);
 
   return (
     <>
@@ -38,27 +35,31 @@ function StatusAdmin() {
               <th>USER ID</th>
               <th>USERNAME</th>
               <th>TABLE</th>
-              <th>AMOUNT</th>
+              {/* <th>AMOUNT</th> */}
               <th>TIMESTAMP</th>
               <th>DATE</th>
-              <th>TIME</th>
+              {/* <th>TIME</th> */}
               <th>LIQUOR</th>
               <th>STATUS</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>ข้อมูล 1</td>
-              <td>ข้อมูล 2</td>
-              <td>ข้อมูล 3</td>
-              <td>ข้อมูล 4</td>
-              <td>ข้อมูล 5</td>
-              <td>ข้อมูล 6</td>
-              <td>ข้อมูล 7</td>
-              <td>ข้อมูล 8</td>
-              <td>ข้อมูล 9</td>
-              <td onClick={handleGoURL}>ข้อมูล 10</td>
-            </tr>
+            {reservationData.map((rowData, index) => (
+              <tr key={index}>
+              <td>{rowData._id}</td>
+              <td>{rowData.a}</td>
+              <td>{rowData.nameUser}</td>
+              <td>{rowData.table_id}</td>
+              {/* <td>{rowData.gender}</td> */}
+              <td>{rowData.timestamp}</td>
+              <td>{rowData.arrival}</td>
+              <td>{rowData.drink_id}</td>
+              <td onClick={()=>handleGoURL(index)}
+              style={{color: rowData.status === 'waiting' ? 'yellow' : rowData.status === 'cancel-owner'|| rowData.status === 'cancel-customer'  ? 'red' :
+              rowData.status === 'confirm'  ? 'green' : 'inherit'}}>
+                {rowData.status}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

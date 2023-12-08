@@ -1,5 +1,5 @@
 .payment-box{
-    width: 30vw; /* ปรับความกว้างตามที่คุณต้องการ */
+    width: 25vw; /* ปรับความกว้างตามที่คุณต้องการ */
     height: 220px; /* ปรับความสูงตามที่คุณต้องการ */
     border: 5px solid #FF53C0; /* สีเส้นขอบสีม่วง */
     padding: 70px; /* ระยะขอบภายใน */
@@ -10,8 +10,7 @@
     height: 100px;
 }
 .table-pay img{
-    max-width: 100%;
-    height: auto;
+    width: 100px;
 }
 .detail-table{
     display: flex;
@@ -74,4 +73,15 @@
     cursor: pointer;
     width: 15rem;
     max-width: 100%;
+  }
+
+  @media screen and (max-width: 420px) {
+    .receipt-box{
+        width: 220px; /* ปรับความกว้างตามที่คุณต้องการ */
+        height: 360px; /* ปรับความสูงตามที่คุณต้องการ */
+        border: 5px solid #FF53C0; /* สีเส้นขอบสีม่วง */
+        padding: 40px; /* ระยะขอบภายใน */
+        border-radius: 30px;
+        margin-top: 20px;
+    }
   }

@@ -26,8 +26,8 @@ function Footer() {
         <div className="section-foot">
          <div className="service">
          <h3>customer service</h3>
-          <p>FAQ</p>
-          <p>Blog</p>
+          <p>Reservations</p>
+          <p>Request songs</p>
          </div>
         </div>
       </div>

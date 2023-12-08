@@ -18,6 +18,8 @@ import { CookiesProvider } from 'react-cookie';
 import MusicDashboard from "./pages/admin/music.jsx";
 import UserDashboard from "./pages/admin/User.jsx";
 import DetailReserve from "./pages/admin/Detailreserve.jsx";
+import Cancel from "./pages/admin/Cancel.jsx";
+import Homeadmin from "./pages/admin/Homeadmin.jsx";
 
 
 
@@ -59,7 +61,7 @@ const router = createBrowserRouter([
     element: <Status />,
   },
   {
-    path: "reserve/refund",
+    path: "reserve/refund/:id",
     element: <Refund />,
   },
   {
@@ -75,9 +77,16 @@ const router = createBrowserRouter([
     element: <UserDashboard />,
   },
   {
-    path:"admin/reserve/detail",
+    path:"admin/reserve/detail/:id",
     element: <DetailReserve />
-
+  },
+  {
+    path:"admin/reserve/cancel",
+    element: <Cancel />
+  },
+  {
+    path:"admin/",
+    element: <Homeadmin />
   }
 ]);
 

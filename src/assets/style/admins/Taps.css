@@ -44,11 +44,12 @@
   }
   /* status-box */
   .status-box2{
-    width: 60rem; /* ปรับความกว้างตามที่คุณต้องการ */
+    width: 80vw; /* ปรับความกว้างตามที่คุณต้องการ */
     height: 30rem; /* ปรับความสูงตามที่คุณต้องการ */
     border-radius:  0 20px 20px 20px;
     background-color: #111C44;
     color: white;
+    overflow: auto;
 }
 table {
     font-family: arial, sans-serif;
@@ -69,11 +70,12 @@ table {
   }
 
   .status-box3{
-    width: 60rem; /* ปรับความกว้างตามที่คุณต้องการ */
+    width: 80vw; /* ปรับความกว้างตามที่คุณต้องการ */
     height: 30rem; /* ปรับความสูงตามที่คุณต้องการ */
     border-radius:  20px 20px 20px 20px;
     background-color: #111C44;
     color: white;
+    overflow: auto;
   }
 
   

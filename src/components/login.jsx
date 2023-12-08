@@ -25,11 +25,9 @@ function Signin() {
         console.log("api",response.data.Token);
         setToken(response.data.Token);
         console.log("cookie",cookies.token);
-        // ทำลังจาก POST เสร็จสิ้น
       })
       .catch((error) => {
         console.error('POST Error:', error);
-        // จัดการข้อผิดพลาด
       });
   };
 

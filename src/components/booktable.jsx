@@ -11,16 +11,20 @@ function Table({ selectedDate }) {
   const [prohibitBoxes, setProhibitBoxes] = useState([true,false,false,false,false,false,false,false,false])
   const [selectedBoxes, setSelectedBoxes] = useState(Array(10).fill(false));
   const [cookies, setCookie, removeCookie] = useCookies(['token']);
-  const [testTable, settestTable] = useState([])
+  const [testTable, settestTable] = useState([]);
+  const [apiDataReady, setApiDataReady] = useState(false);
 
   useEffect(() => {
-    API.fetchTableData(cookies.token).then((response) => {
-      console.log('POST Response:', response.data);
-      settestTable(response.data);
-    })
-    .catch((error) => {
-      console.error('POST Error:', error);
-    });
+    if(!selectedDate.includes("undefined")){
+      API.fetchTableData(cookies.token,selectedDate).then((response) => {
+        console.log('POST Response:', response.data);
+        settestTable(response.data);
+        setApiDataReady(true);
+      })
+      .catch((error) => {
+        console.error('POST Error:', error);
+      });
+    }
   }, [selectedDate]);
 
   const handleBoxClick = (boxIndex) => {
@@ -36,7 +40,9 @@ function Table({ selectedDate }) {
     const boxes = [];
 
     for (let i = 0; i < 10; i++) {
-      const Prohibit = prohibitBoxes[i];
+      // const { State } = testTable[i];
+      // const Prohibit = State;
+      const Prohibit = testTable[i].State;
       const isSelected = selectedBoxes[i];
       const image = Prohibit ? image3 : isSelected ? image2 : image1;
       {selectedBoxes.some((isSelected) => isSelected)}
@@ -53,14 +59,18 @@ function Table({ selectedDate }) {
     return boxes;
   };
 
-  return (
+  return ( 
     <div className="table-page">
-      <div className="table-container">{renderBoxes()}</div>
-      {selectedBoxes.some((isSelected) => isSelected) && (
-          <Slide selectedBoxes={testTable
-            .filter((_, index) => selectedBoxes[index])
-            .map(obj => obj._id)} selectedDate={selectedDate} />
-        )}
+      {apiDataReady && ( // เช็คว่า API เสร็จสิ้นหรือยัง
+        <>
+          <div className="table-container">{renderBoxes()}</div>
+          {selectedBoxes.some((isSelected) => isSelected) && (
+            <Slide selectedBoxes={testTable
+              .filter((_, index) => selectedBoxes[index])
+              .map(obj => obj._id)} selectedDate={selectedDate} />
+          )}
+        </>
+      )}
     </div>
   );
 }

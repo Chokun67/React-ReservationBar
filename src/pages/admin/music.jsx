@@ -1,14 +1,28 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import "../../assets/style/admins/Taps.css";
-import Navi from "../../components/navi.jsx";
+import Navi from "../../components/naviadmin.jsx";
 import { useNavigate } from "react-router-dom";
+import { API_Customer } from '../../assets/api/customer';
+import { useCookies } from 'react-cookie';
 
 function MusicDashboard() {
+  const [cookies, setCookie, removeCookie] = useCookies(['token']);
   const [activeTab, setActiveTab] = useState("Reservation"); // กำหนด Tab เริ่มต้นเป็น 'Reservation'
+  const [quece, setQuece] = useState([]);
   const navigate = useNavigate();
   const handleGoURL = () => {
     navigate("/reserve/refund");
   };
+  useEffect(()=>{
+    API_Customer.queueMusic(cookies.token)
+      .then((response) => {
+        console.log("POST Resrvation:", response.data);
+        setQuece(response.data);
+      })
+      .catch((error) => {
+        console.error("POST Error:", error);
+      });
+  }, []);
   return (
     <>
       <div className="full-screen-bg-music">
@@ -29,13 +43,15 @@ function MusicDashboard() {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>ข้อมูล 1</td>
-                        <td>ข้อมูล 2</td>
-                        <td>ข้อมูล 3</td>
-                        <td>ข้อมูล 4</td>
-                        <td onClick={handleGoURL}>ข้อมูล 5</td>
+                      {quece.map((rowData, index) => (
+                     <tr key={index}>
+                      <td>{rowData.user_id}</td>
+                      <td>{rowData.user_id}</td>
+                      <td>{rowData.name_song}</td>
+                      <td>{rowData.message}</td>
+                      <td>{rowData.url}</td>
                       </tr>
+                      ))}
                     </tbody>
                   </table>
                 </div>
