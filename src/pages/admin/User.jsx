@@ -10,6 +10,7 @@ function UserDashboard() {
   const [userdata, setUserdata] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
+    console.log(cookies.token);
     API_Customer.getAllUser(cookies.token)
       .then((response) => {
         console.log("POST Resrvation:", response.data);
@@ -17,6 +18,7 @@ function UserDashboard() {
       })
       .catch((error) => {
         console.error("POST Error:", error);
+        navigate('/admin/login');
       });
   }, []);
   const splitName = (fullName) => {

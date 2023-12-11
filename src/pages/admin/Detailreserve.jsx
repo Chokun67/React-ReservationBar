@@ -28,6 +28,7 @@ function DetailReserve() {
       })
       .catch((error) => {
         console.error("POST Error:", error);
+        
       });
   };
   const handleGoBack = () => {
@@ -42,6 +43,7 @@ function DetailReserve() {
     })
     .catch((error) => {
       console.error('เกิดข้อผิดพลาดในการดึงข้อมูล:', error);
+      navigate('/admin/login');
     });
   }, []);
 
@@ -58,7 +60,7 @@ function DetailReserve() {
               </div>
               <div className="box-confirm-table flex-col">
                 <div className="textleft">
-                  <h2>STATUS</h2> 
+                  <h2 className="detailtext">STATUS</h2> 
                 </div>
                 <div className="flex-row">
                   <div className="flex-part1 status-detail">
@@ -74,7 +76,7 @@ function DetailReserve() {
                   </div>
                   <div className="flex-part1">
                     <div className="pic-statement">
-                      <img src={`http://10.32.99.131:7000/image/${reservationData.statement}`} alt="รูปภาพการโอน" />
+                      <img src={`http://10.32.69.204:7000/image/${reservationData.statement}`} alt="รูปภาพการโอน" />
                     </div>
                   </div>
                 </div>

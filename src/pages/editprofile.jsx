@@ -1,18 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../assets/style/user.css";
 import Navi from "../components/navi.jsx";
 import { AiOutlineCheck } from "react-icons/ai";
 import profile from "../assets/image/profile.png";
-import { useCookies } from 'react-cookie';
+import { useCookies } from "react-cookie";
+import { useNavigate } from "react-router-dom";
 import { API } from "../assets/api/authen";
+import swalactive from "../components/swalfire.jsx";
 
 function Edituser() {
-  const [cookies, setCookie, removeCookie] = useCookies(['token']);
+  const navigate = useNavigate();
+  const [cookies, setCookie, removeCookie] = useCookies(["token"]);
   const [formIsValid, setFormIsValid] = useState(true);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
-    gender: "",
+    gender: "ชาย",
     username: "",
     phone: "",
     birthday: "",
@@ -23,6 +26,31 @@ function Edituser() {
     username: "",
     phone: "",
   });
+
+  useEffect(() => {
+    if (!cookies.token) {
+      navigate("/login");
+      return;
+    }
+    API.fetchPersonaleData(cookies.token)
+      .then((response) => {
+        console.log("POST Response:", response.data);
+        const separatedname = response.data.name.split(" ");
+        setFormData({
+          firstName: separatedname[0],
+          lastName: separatedname[1],
+          gender: response.data.gender,
+          username: response.data.username,
+          phone: response.data.phone,
+          birthday: response.data.birthday,
+        });
+      })
+      .catch((error) => {
+        console.error("POST Error:", error);
+        // navigate("/login");
+      });
+    
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -46,11 +74,10 @@ function Edituser() {
       // if(!value.includes("@")){
       //   newErrors[name] = "Username must be a  email address format.";
       // }
-      // else 
+      // else
       if (value.length < 8) {
         newErrors[name] = "Username must be at least 8 characters";
-      }
-      else {
+      } else {
         delete newErrors[name];
       }
     }
@@ -61,25 +88,37 @@ function Edituser() {
     setFormIsValid(!hasErrors);
   };
 
-  const handleSubmit = (e) => {
-    
-    if(!formIsValid){
-      return swalactive("error", "Please check your form");
-    }
-    if (!Object.values(formData).every((value) => value !== "")) {
-      return swalactive("error", "Please fill out all fields");
-    }
+  const handleSubmit = async(e) => {
 
     e.preventDefault();
-    console.log(formData);
-    API.user_updateinfo(cookies.token,formData).then((response) => {
-      console.log('POST Response:', response.data);
-      swalactive("success", "Request music success");
-    })
-    .catch((error) => {
-      console.error('POST Error:', error);
-      swalactive("error", "Request music error");
-    });
+    if (!formIsValid || !Object.values(errors).every((error) => !error)) {
+      return swalactive("error", "Please check your form");
+  }
+  if (!Object.values(formData).every((value) => value !== "")) {
+      return swalactive("error", "Please fill out all fields");
+  }
+  const fullName = formData.firstName && formData.lastName
+  ? `${formData.firstName} ${formData.lastName}`
+  : null;
+
+const finalFormData = { ...formData };
+if (fullName) {
+  finalFormData.name = fullName;
+  delete finalFormData.firstName;
+  delete finalFormData.lastName;
+}
+
+console.log(finalFormData);
+    API.user_updateinfo(cookies.token, finalFormData)
+      .then((response) => {
+        console.log("POST Response:", response.data);
+        swalactive("success", "Update information success.");
+        navigate('/user');
+      })
+      .catch((error) => {
+        console.error("POST Error:", error);
+        swalactive("error", "Update information error.");
+      });
   };
 
   return (
@@ -91,9 +130,9 @@ function Edituser() {
             <div className="user-box flex-column">
               <form className="edit-form" onSubmit={handleSubmit}>
                 <div className="picuser-center">
-                <div className="profilepic2">
-                  <img src={profile} alt="Your profile" />
-                </div>
+                  <div className="profilepic2">
+                    <img src={profile} alt="Your profile" />
+                  </div>
                 </div>
                 <div className="name-container">
                   <div>
@@ -103,9 +142,13 @@ function Edituser() {
                       name="firstName"
                       value={formData.firstName}
                       onChange={handleChange}
-                      style={{ borderBottom: errors.firstName ? "1px solid red" : "" }}
+                      style={{
+                        borderBottom: errors.firstName ? "1px solid red" : "",
+                      }}
                     />
-                    {errors.firstName && <p className="error-message ">{errors.firstName}</p>}
+                    {errors.firstName && (
+                      <p className="error-message ">{errors.firstName}</p>
+                    )}
                   </div>
                   <div>
                     <label>Last Name:</label>
@@ -114,9 +157,13 @@ function Edituser() {
                       name="lastName"
                       value={formData.lastName}
                       onChange={handleChange}
-                      style={{ borderBottom: errors.lastName ? "1px solid red" : "" }}
+                      style={{
+                        borderBottom: errors.lastName ? "1px solid red" : "",
+                      }}
                     />
-                    {errors.lastName && <p className="error-message ">{errors.lastName}</p>}
+                    {errors.lastName && (
+                      <p className="error-message ">{errors.lastName}</p>
+                    )}
                   </div>
                 </div>
                 <div className="name-container">
@@ -141,7 +188,6 @@ function Edituser() {
                       value={formData.birthday}
                       onChange={handleChange}
                     />
-                    
                   </div>
                 </div>
                 <div className="name-container">
@@ -152,9 +198,13 @@ function Edituser() {
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      style={{ borderBottom: errors.phone ? "1px solid red" : "" }}
+                      style={{
+                        borderBottom: errors.phone ? "1px solid red" : "",
+                      }}
                     />
-                    {errors.phone && <p className="error-message ">{errors.phone}</p>}
+                    {errors.phone && (
+                      <p className="error-message ">{errors.phone}</p>
+                    )}
                   </div>
                   <div>
                     <label>Username:</label>

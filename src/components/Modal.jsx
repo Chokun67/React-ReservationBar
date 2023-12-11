@@ -8,13 +8,6 @@ export default function Modal() {
   const toggleModal = () => {
     setModal(!modal);
   };
-
-  // if (modal) {
-  //   document.body.classList.add("active-modal");
-  // } else {
-  //   document.body.classList.remove("active-modal");
-  // }
-
   return (
     <>
       <AiOutlineQuestionCircle onClick={toggleModal} className="btn-modal" />
@@ -39,3 +32,9 @@ export default function Modal() {
     </>
   );
 }
+
+  // if (modal) {
+  //   document.body.classList.add("active-modal");
+  // } else {
+  //   document.body.classList.remove("active-modal");
+  // }

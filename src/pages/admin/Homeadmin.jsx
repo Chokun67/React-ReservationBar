@@ -13,7 +13,7 @@ function Home() {
   };
   return (
     <>
-      <div className="backgroundblue">
+      <div className="background-blue">
       <div className="full-screen-bg">
         <div className="firstpage">
           <Navi />

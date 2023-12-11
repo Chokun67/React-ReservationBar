@@ -13,10 +13,11 @@ function Table({ selectedDate }) {
   const [cookies, setCookie, removeCookie] = useCookies(['token']);
   const [testTable, settestTable] = useState([]);
   const [apiDataReady, setApiDataReady] = useState(false);
+  const [loading,setLoading]= useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if(cookies.token){
+    if(!cookies.token){
       navigate("/login");
       return
     }
@@ -44,11 +45,9 @@ function Table({ selectedDate }) {
     setSelectedBoxes(updatedBoxes);
   };
 
-  const renderBoxes = () => {
+    const renderBoxes = () => {
     const boxes = [];
     for (let i = 0; i < 10; i++) {
-      // const { State } = testTable[i];
-      // const Prohibit = State;
       const Prohibit = testTable[i].State;
       const isSelected = selectedBoxes[i];
       const image = Prohibit ? image3 : isSelected ? image2 : image1;

@@ -21,6 +21,7 @@ function MusicDashboard() {
       })
       .catch((error) => {
         console.error("POST Error:", error);
+        navigate('/admin/login');
       });
   }, []);
   return (
@@ -38,7 +39,7 @@ function MusicDashboard() {
                         <th>USER ID</th>
                         <th>USERNAME</th>
                         <th>SONG</th>
-                        <th>ARTIST</th>
+                        <th>MESSAGE</th>
                         <th>LINK</th>
                       </tr>
                     </thead>

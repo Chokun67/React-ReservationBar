@@ -55,7 +55,7 @@ function User() {
       })
       .catch((error) => {
         console.error("POST Error:", error);
-        navigate("/login");
+        // navigate("/login");
       });
 
     API.getMyReservation(cookies.token)
@@ -70,7 +70,7 @@ function User() {
 
   return (
     <>
-      <div className="full-screen-bg-music">
+      <div className="full-screen-bg-user">
         <div className="firstpage">
           <Navi />
           <div className="boxcenter">
@@ -84,32 +84,32 @@ function User() {
                 <div className="grid-user">
                   <div className="detail-user">
                     <div className="name">First Name:</div>
-                    <div>{formData.firstName}</div>
+                    <p>{formData.firstName}</p>
                   </div>
                   <div className="detail-user">
                     <div className="name">Last Name:</div>
-                    <div>{formData.lastName}</div>
+                    <p>{formData.lastName}</p>
                   </div>
                   <div className="detail-user">
                     <div className="name">Gender</div>
-                    <div>{formData.gender}</div>
+                    <p>{formData.gender}</p>
                   </div>
                   <div className="detail-user">
                     <div className="name">Birthday</div>
-                    <div>{formData.birthday}</div>
+                    <p>{formData.birthday}</p>
                   </div>
                   <div className="detail-user">
                     <div className="name">Tel. number:</div>
-                    <div>{formData.telephone}</div>
+                    <p>{formData.telephone}</p>
                   </div>
                   <div className="detail-user"></div>
                   <div className="detail-user">
                     <div className="name">Username</div>
-                    <div>{formData.username}</div>
+                    <p>{formData.username}</p>
                   </div>
                   <div className="detail-user">
                     <div className="name">Password</div>
-                    <div>*******</div>
+                    <p>*******</p>
                   </div>
                 </div>
                 <button className="right-border-button" onClick={goEdit}>

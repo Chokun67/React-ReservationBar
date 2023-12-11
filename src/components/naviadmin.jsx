@@ -38,11 +38,11 @@ function naviadmin() {
   const handleLogout = () => {
     removeCookie('token');
     setSignin(false);
-    navigate("/login", { replace: true });
+    navigate("/admin/login", { replace: true });
     window.location.reload();
   };
   const handleLogin = () => {
-    navigate("/login");
+    navigate("/admin/login");
   };
   const swalactive=()=>{
     Swal.fire('Please login first')
@@ -52,7 +52,7 @@ function naviadmin() {
     <div className="App">
       <header>
         <nav>
-          <Link to="/">
+          <Link to="/admin">
             <div className="logo">
               <img src={logo} alt="Your Logo" />
               <div className="circle"></div>
@@ -84,7 +84,7 @@ function naviadmin() {
           ) : (
             <div className="auth-buttons">
               <div>
-              {signin?<Link to="/login">Login</Link>:<Link to="/" onClick={handleLogout}>Logout</Link>}
+              {signin?<Link to="/admin/login">Login</Link>:<Link to="/admin/login" onClick={handleLogout}>Logout</Link>}
               </div>
             </div>
           )}

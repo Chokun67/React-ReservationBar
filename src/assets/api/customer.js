@@ -1,10 +1,10 @@
 import axios from "axios"; // นำเข้า Axios library
 
-const API_URL = "http://10.32.99.131:7000";
+const API_URL = "http://10.32.69.204:7000";
 
 export const API_Customer = {
   admin_login: (data) => {
-    const apiUrl = `${API_URL}/login`;
+    const apiUrl = `${API_URL}/api-owner/login`;
     const headers = {
       "Content-Type": "application/json",
     };
@@ -13,10 +13,10 @@ export const API_Customer = {
 
   customer_confirm: (token,data) => {
     const apiUrl = `${API_URL}/api-owner/confirm`;
-    const headers = {
+    const customHeaders = {
       Authorization: `Bearer ${token}`,
     };
-    return axios.put(apiUrl, data, { headers });
+    return axios.put(apiUrl, data, { headers: customHeaders });
   },
 
   getAllUser: (token) => {
@@ -24,7 +24,7 @@ export const API_Customer = {
     const customHeaders = {
       Authorization: `Bearer ${token}`,
     };
-    return axios.get(apiUrl, { customHeaders });
+    return axios.get(apiUrl, { headers: customHeaders });
   },
 
   getDetailResevation: (token) => {
@@ -33,7 +33,7 @@ export const API_Customer = {
     const customHeaders = {
       Authorization: `Bearer ${token}`,
     };
-    return axios.get(apiUrl, { customHeaders });
+    return axios.get(apiUrl, { headers: customHeaders });
   },
 
   getCustomerCancel: (token) => {
@@ -41,26 +41,26 @@ export const API_Customer = {
     const customHeaders = {
       Authorization: `Bearer ${token}`,
     };
-    return axios.get(apiUrl, { customHeaders });
+    return axios.get(apiUrl, { headers: customHeaders });
   },
 
   customer_refundconfirm: (token, data) => {
     const apiUrl = `${API_URL}/api-owner/refund-confirm`;
-    const headers = {
+    const customHeaders = {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     };
-    return axios.put(apiUrl, data, { headers });
+    return axios.put(apiUrl, data, { headers: customHeaders });
   },
 
   queueMusic: (token) => {
     console.log(token);
     const apiUrl = `${API_URL}/api-customer/bar/soung/queue-list`;
-    const headers = {
+    const customHeaders = {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     };
-    return axios.get(apiUrl, { headers });
+    return axios.get(apiUrl, { headers: customHeaders });
   },
 
   songPlay: (data, token) => {

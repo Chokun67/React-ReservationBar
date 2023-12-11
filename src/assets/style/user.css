@@ -1,3 +1,13 @@
+.full-screen-bg-user {
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-image: url('../image/mainbg2.png');
+  background-size: cover;
+  background-position: center;
+}
+
 .user-box{
     background-image: linear-gradient(to top right,#0E032C,#6E4BD0);
     width: 700px; /* ปรับความกว้างตามที่คุณต้องการ */
@@ -16,6 +26,7 @@
     display: flex;
     flex: 2;
     align-items: center; 
+    
 }
 .right-user ul li{
   font-family: 'Urbanist', sans-serif;
@@ -55,9 +66,45 @@
     justify-content: center;
     padding: 10px;
   }
+  .detail-user p{
+    margin: 0;
+  }
 
   .name {
     font-weight: bold;
+  }
+  @media screen and (max-width: 900px){
+
+    .full-screen-bg-user {
+      display: flex;
+      position: relative;
+      width: 100%;
+      height: 1000px;
+      background-image: url('../image/mainbg2.png');
+      background-size: cover;
+      background-position: center;
+      
+    }
+
+    .user-box{
+      display: flex;
+      flex-direction: column;
+      height: 700px;
+      width: 80vw;
+      
+    }
+
+    .user-box hr{
+      border: 3px solid #7BDAFB;
+      width: 100%;
+      
+  }
+  .right-user{
+    display: flex;
+    flex: 2;
+    align-items: center; 
+    overflow: scroll;   
+}
   }
 
 

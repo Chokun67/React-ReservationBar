@@ -13,6 +13,7 @@ function Home() {
     console.log(cookies.token);
   };
   const navigate = useNavigate();
+  
   return (
     <>
       <div className="background-blue">

@@ -42,21 +42,20 @@ function Signup() {
       }
     }
     if (name === "username") {
-      // if(!value.includes("@")){
-      //   newErrors[name] = "Username must be a  email address format.";
-      // }
-      // else 
-      if (value.length < 8) {
+      if (!value.includes("@") || !value.includes(".")) {
+        newErrors[name] = "Username must be a  email address format.";
+      } else if (value.length < 8) {
         newErrors[name] = "Username must be at least 8 characters";
-      }
-      else {
+      } else {
         delete newErrors[name];
       }
     }
     if (name === "password") {
       if (value.length < 6) {
-        newErrors[name] = "กรุณากรอกรหัส 6-20 ตัว";
-      } else {
+        newErrors[name] = "password must ba at 6-20 ตัว";
+      } else if(!/[a-zA-Z]/.test(value)){
+        newErrors[name] = "Password must contain at least 1 letter";
+      }else {
         delete newErrors[name];
       }
     }
@@ -66,28 +65,31 @@ function Signup() {
     const hasErrors = Object.values(newErrors).some((error) => error !== "");
     setFormIsValid(!hasErrors);
   };
+  const googlebutton = () => {
+    swalactive("warning", "feature not ready");
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if(!formIsValid){
+    if (!formIsValid) {
       return swalactive("error", "Please check your form");
     }
     if (!Object.values(formData).every((value) => value !== "")) {
       return swalactive("error", "Please fill out all fields");
     }
-    
-  
-    const fullName = formData.firstName && formData.lastName
-      ? `${formData.firstName} ${formData.lastName}`
-      : null;
-  
+
+    const fullName =
+      formData.firstName && formData.lastName
+        ? `${formData.firstName} ${formData.lastName}`
+        : null;
+
     const finalFormData = { ...formData };
     if (fullName) {
       finalFormData.name = fullName;
       delete finalFormData.firstName;
       delete finalFormData.lastName;
     }
-  
+
     try {
       console.log(finalFormData);
       const response = await API.user_register(finalFormData);
@@ -96,7 +98,11 @@ function Signup() {
       swalactive("success", "Register successfully");
     } catch (error) {
       console.error("POST Error:", error);
-      swalactive("error", "Failed to register");
+      if(error.response.status === 409){
+        swalactive("error", "Username is already taken");
+      }else{
+        swalactive("error", "Failed to register");
+      }
     }
   };
 
@@ -114,9 +120,13 @@ function Signup() {
                   name="firstName"
                   value={formData.firstName}
                   onChange={handleChange}
-                  style={{ borderBottom: errors.firstName ? "1px solid red" : "" }}
+                  style={{
+                    borderBottom: errors.firstName ? "1px solid red" : "",
+                  }}
                 />
-                {errors.firstName && <p className="error-message ">{errors.firstName}</p>}
+                {errors.firstName && (
+                  <p className="error-message ">{errors.firstName}</p>
+                )}
               </div>
               <div>
                 <label>Last Name:</label>
@@ -125,9 +135,13 @@ function Signup() {
                   name="lastName"
                   value={formData.lastName}
                   onChange={handleChange}
-                  style={{ borderBottom: errors.lastName ? "1px solid red" : "" }}
+                  style={{
+                    borderBottom: errors.lastName ? "1px solid red" : "",
+                  }}
                 />
-                {errors.lastName && <p className="error-message ">{errors.lastName}</p>}
+                {errors.lastName && (
+                  <p className="error-message ">{errors.lastName}</p>
+                )}
               </div>
             </div>
             <div className="name-container">
@@ -174,7 +188,9 @@ function Signup() {
                 onChange={handleChange}
                 style={{ borderBottom: errors.username ? "1px solid red" : "" }}
               />
-              {errors.username && <p className="error-message ">{errors.username}</p>}
+              {errors.username && (
+                <p className="error-message ">{errors.username}</p>
+              )}
             </div>
             <div>
               <label>Password:</label>
@@ -185,7 +201,9 @@ function Signup() {
                 onChange={handleChange}
                 style={{ borderBottom: errors.password ? "1px solid red" : "" }}
               />
-              {errors.password && <p className="error-message ">{errors.password}</p>}
+              {errors.password && (
+                <p className="error-message ">{errors.password}</p>
+              )}
             </div>
 
             <button type="submit" className="login-button">
@@ -196,7 +214,11 @@ function Signup() {
               <span>or</span>
               <hr />
             </div>
-            <button type="button" className="google-login-button">
+            <button
+              type="button"
+              className="google-login-button"
+              onClick={googlebutton}
+            >
               <FcGoogle className="icon-google" /> Continue with Google
             </button>
           </form>

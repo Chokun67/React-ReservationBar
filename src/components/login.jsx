@@ -26,7 +26,6 @@ function Signin() {
         console.log('POST Response:', response.data);
         console.log("api",response.data.Token);
         setToken(response.data.Token);
-
         navigate("/");
         swalactive('success','success to login');
       })
@@ -40,6 +39,10 @@ function Signin() {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
   };
+
+  const googlebutton = () =>{
+    swalactive('warning','feature not ready')
+  }
 
   return (
     <>
@@ -75,7 +78,7 @@ function Signin() {
               <span>or</span>
               <hr />
             </div>
-            <button type="button" className="google-login-button">
+            <button type="button" className="google-login-button" onClick={googlebutton}>
               <FcGoogle className="icon-google" />
               Login with Google
             </button>

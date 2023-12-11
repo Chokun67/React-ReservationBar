@@ -8,10 +8,12 @@ import headphone from "../assets/image/headphone.png";
 import { API } from '../assets/api/authen';
 import { useCookies } from 'react-cookie';
 import swalactive from "../components/swalfire.jsx";
+import { useNavigate } from "react-router-dom";
 
 
 
 function Music() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name_song: "",
     url: "",
@@ -39,7 +41,7 @@ function Music() {
   };
 
   useEffect(() => {
-    if(cookies.token){
+    if(!cookies.token){
       navigate("/login");
       return
     }
@@ -88,7 +90,7 @@ function Music() {
                     <BsFillPersonFill className="icons-top"/>
                     </div>
                     <div className="right">
-                      <label htmlFor="artist">Artist:</label>
+                      <label htmlFor="artist">Message:</label>
                       <input
                         type="text"
                         id="artist"

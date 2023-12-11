@@ -10,6 +10,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { API } from "../assets/api/authen";
 import { useCookies } from "react-cookie";
 import Swal from "sweetalert2";
+import qrimg from "../assets/image/qrimg.jpg";
 
 function Receipt() {
   const [cookies, setCookie, removeCookie] = useCookies(["token"]);
@@ -34,13 +35,6 @@ function Receipt() {
   const handleFileChange = (event) => {
     const file = event.target.files[0]; // รับไฟล์ที่ผู้ใช้เลือก
     setSelectedFile(file);
-    // const file = event.target.files[0]; // รับไฟล์ที่ผู้ใช้เลือก
-    // const reader = new FileReader();
-    // reader.onload = (e) => {
-    //   const binaryImage = e.target.result; // รูปภาพในรูปแบบ binary (base64)
-    //   setSelectedFile(binaryImage);
-    // };
-    // reader.readAsDataURL(file); // อ่านและแปลงรูปภาพเป็น binary
   };
 
   const confirmTable = () => {
@@ -68,15 +62,18 @@ function Receipt() {
         <div className="firstpage">
           <Navi />
           <div className="boxcenter">
+          <h1 className="receipth1">Payment</h1>
             <div className="receipt-box flex-column">
-              <div className="flex-part3"></div>
+              <div className="flex-part3 qrimg">
+              <img src={qrimg} alt="Your profile" />
+              </div>
               <div className="flex-part2">
                 <p>
                   Account Name: Laorian Bar
                   <br />
-                  Account Number: 013-7-11139-2
-                  <br />
                   Bank: Kasikornthai
+                  <br />
+                  Total : 300 bath
                 </p>
               </div>
               <div className="flex-part1">

@@ -1,6 +1,6 @@
 import axios from "axios"; // นำเข้า Axios library
 
-const API_URL = "http://10.32.99.131:7000/api-customer";
+const API_URL = "http://10.32.69.204:7000/api-customer";
 
 export const API = {
 
@@ -30,12 +30,12 @@ export const API = {
   },
 
   user_updateinfo: (token,data) => {
-    const apiUrl = `${API_URL}/secret/member/update-personal-infor`;
-    const headers = {
+    const apiUrl = `${API_URL}/secret/member/update-personal-info`;
+    const customHeaders = {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     };
-    return axios.put(apiUrl, data, {headers});
+    return axios.put(apiUrl, data, {headers: customHeaders});
   },
 
     ////////////// Table Reserve ///////////////////
@@ -87,11 +87,11 @@ export const API = {
   },
   user_refund: (token,data) => {
     const apiUrl = `${API_URL}/bar/table/refund-money`;
-    const headers = {
+    const customHeaders = {
       Authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
     };
-    return axios.post(apiUrl, data, {headers});
+    return axios.post(apiUrl, data, {headers: customHeaders});
   },
 
 

@@ -22,6 +22,7 @@ function StatusAdmin() {
     })
     .catch((error) => {
       console.error('เกิดข้อผิดพลาดในการดึงข้อมูล:', error);
+      navigate('/admin/login');
     });
   }, []);
 
@@ -48,7 +49,7 @@ function StatusAdmin() {
   reservationData.map((rowData, index) => (
     <tr key={index}>
       <td>{rowData._id}</td>
-      <td>{rowData.a}</td>
+      <td>{rowData.user_id}</td>
       <td>{rowData.nameUser}</td>
       <td>{rowData.table_id}</td>
       {/* <td>{rowData.gender}</td> */}

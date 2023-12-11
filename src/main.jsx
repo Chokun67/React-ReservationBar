@@ -21,6 +21,7 @@ import DetailReserve from "./pages/admin/Detailreserve.jsx";
 import Cancel from "./pages/admin/Cancel.jsx";
 import Homeadmin from "./pages/admin/Homeadmin.jsx";
 import StatusDetail from "./pages/statusdetail.jsx";
+import Signinadmin from "./pages/admin/adminlogin.jsx";
 
 
 
@@ -86,13 +87,17 @@ const router = createBrowserRouter([
     element: <DetailReserve />
   },
   {
-    path:"admin/reserve/cancel",
+    path:"admin/reserve/cancel/:id",
     element: <Cancel />
   },
   {
     path:"admin/",
     element: <Homeadmin />
-  }
+  },{
+    path:"admin/login",
+    element: <Signinadmin/>
+  },
+
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

@@ -1,5 +1,5 @@
 .payment-box{
-    width: 25vw; /* ปรับความกว้างตามที่คุณต้องการ */
+    width: 350px; /* ปรับความกว้างตามที่คุณต้องการ */
     height: 220px; /* ปรับความสูงตามที่คุณต้องการ */
     border: 5px solid #FF53C0; /* สีเส้นขอบสีม่วง */
     padding: 70px; /* ระยะขอบภายใน */
@@ -17,9 +17,11 @@
     align-items: start;
 }
 .detail-table p{
-    font-size: 30px;
+    font-size: 18px;
     margin: 0;
     padding-left: 30px;
+    display: flex;
+  align-items: center; /* ทำให้ข้อความอยู่ตรงกลางตามแนวตั้ง */
 }
 .select-time label{
     display: flex;
@@ -32,8 +34,17 @@
 }
 .select-bottle label{
     font-size: 20px;
-    padding-top: 40px;
+    padding-top: 30px;
 }
+.select-bottle select{
+    width: 100%; /* ทำให้เต็มพื้นที่ความกว้าง */
+  box-sizing: border-box; /* ป้องกันการเพิ่มขนาดของ select จาก padding หรือ border */
+  /* เพิ่มสไตล์เสริมตามต้องการ */
+  padding: 5px; /* ตั้งค่า padding ตามที่ต้องการ */
+  border: 1px solid #ccc; /* ตั้งค่า border ตามที่ต้องการ */
+  border-radius: 4px; /* ใส่ border-radius ตามที่ต้องการ */
+}
+
 @media screen and (max-width: 1024px) {
     .payment-box{
         width: 50vw; /* ปรับความกว้างตามที่คุณต้องการ */
@@ -42,6 +53,7 @@
         padding: 40px; /* ระยะขอบภายใน */
         border-radius: 30px;
         margin-top: 20px;
+        max-width: 350px;
     }
   }
 @media screen and (max-width: 560px) {
@@ -74,14 +86,27 @@
     width: 15rem;
     max-width: 100%;
   }
-
+  .flex-part3.qrimg img {
+    max-width: 100%; /* ทำให้รูปภาพไม่ใหญ่เกินขนาดของ container */
+    height: auto; /* รักษาสัดส่วนของรูปภาพ */
+    max-height: 180px;
+  }
+  .receipth1{
+    margin-top: 40px;
+    width: 50%;
+    font-size: 40px;
+    color: white; /* สีของตัวอักษร */
+    text-shadow: 0 0 10px rgb(64, 150, 179), 0 0 20px rgb(95, 167, 191), 0 0 30px rgb(58, 175, 214);
+    text-align: left;
+}
   @media screen and (max-width: 420px) {
     .receipt-box{
-        width: 220px; /* ปรับความกว้างตามที่คุณต้องการ */
+        width: 240px; /* ปรับความกว้างตามที่คุณต้องการ */
         height: 360px; /* ปรับความสูงตามที่คุณต้องการ */
         border: 5px solid #FF53C0; /* สีเส้นขอบสีม่วง */
         padding: 40px; /* ระยะขอบภายใน */
         border-radius: 30px;
         margin-top: 20px;
     }
+   
   }

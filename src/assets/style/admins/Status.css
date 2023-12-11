@@ -12,6 +12,7 @@
   display: flex;
   width: 60vw;
   height: 60vh;
+  
 } 
 
 .box-confirm-table{
@@ -103,6 +104,23 @@
   display: flex;
   text-align: left;
   align-items: center;
-  padding-left: 80px;
+  padding-left: 40px;
 }
 
+
+/* admin login form */
+.admin-container{
+  width: 30%;
+  height: 80%;
+}
+.container-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.detailtext{
+  padding-left: 20px;
+}

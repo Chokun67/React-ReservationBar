@@ -17,6 +17,10 @@ function Status() {
     navigate(-1); // ใช้ useNavigate เพื่อย้อนกลับไป URL ก่อนหน้า
   };
   useEffect(() => {
+    if (!cookies.token) {
+      navigate("/login");
+      return;
+    }
     API.getMyReservation(cookies.token)
       .then((response) => {
         console.log("POST Response:", response.data);
@@ -33,8 +37,8 @@ function Status() {
         <div className="firstpage">
           <Navi />
           <div className="boxcenter">
-            <h1>WELCOME</h1>
-            <div className="status-box flex-column">
+          <h1 className="statush1">Reservation STATUS</h1>
+            <div className="status-box flex-column"> 
               <table>
                 <thead>
                   <tr>
@@ -55,7 +59,29 @@ function Status() {
                         <td>1</td>
                         <td>{rowData.timestamp}</td>
                         <td>{rowData.arrival}</td>
-                        <td onClick={() => handleGoURL(index)}>
+                        <td
+                          style={{
+                            color:
+                              rowData.status === "waiting"
+                                ? "#fbbc05"
+                                : rowData.status === "cancel-owner" ||
+                                  rowData.status === "cancel-customer"
+                                ? "red"
+                                : rowData.status === "confirm"
+                                ? "green"
+                                : "inherit",
+                                textDecoration:
+                                rowData.status === "confirm" || rowData.status === "waiting"
+                                  ? "underline"
+                                  : "none",
+                          }}
+                          
+                          onClick={() => {
+                            if (rowData.status !== "cancel-owner" && rowData.status !== "cancel-customer") {
+                              handleGoURL(index);
+                            }
+                          }}
+                        >
                           {rowData.status}
                         </td>
                       </tr>

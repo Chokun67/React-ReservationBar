@@ -6,31 +6,23 @@ import { useCookies } from 'react-cookie';
 function Cancellation() {
   const [cookies, setCookie, removeCookie] = useCookies(['token']);
   const [canceldata, setCanceldata] = useState([]);
+  const [loading , setloading] = useState(false);
   const navigate = useNavigate();
-  const handleGoURL = () => {
-    navigate("/reserve/refund");
+  const handleGoURL = (idcencel) => {
+    navigate(`/admin/reserve/cancel/${idcencel}`);
   };
 
   const handleGoBack = () => {
     navigate(-1); // ใช้ useNavigate เพื่อย้อนกลับไป URL ก่อนหน้า
   };
 
-  const handleclick = (dataid) => {
-    const data = {reservationID : dataid}
-    API_Customer.customer_refundconfirm(cookies.token,data)
-      .then((response) => {
-        console.log("POST Resrvation:", response.data);
-      })
-      .catch((error) => {
-        console.error("POST Error:", error);
-      });
-  };
 
   useEffect(()=>{
     API_Customer.getCustomerCancel(cookies.token)
       .then((response) => {
         console.log("POST Resrvation:", response.data);
         setCanceldata(response.data);
+        setloading(true);
       })
       .catch((error) => {
         console.error("POST Error:", error);
@@ -39,7 +31,7 @@ function Cancellation() {
 
   return (
     <>
-      <div className="status-box2 flex-column">
+     {loading?( <div className="status-box2 flex-column">
         <table>
           <thead>
             <tr className="tr-admin">
@@ -56,13 +48,17 @@ function Cancellation() {
           {canceldata ? (
   canceldata.map((rowData, index) => (
     <tr key={index}>
-      <td>{rowData._id}</td>
-      <td>{rowData.user_id}</td>
-      <td>{rowData.NameUser}</td>
-      <td>{rowData.message}</td>
-      <td>{rowData.arrival}</td>
-      <td>{rowData.drink_id}</td>
-      <td onClick={() => handleclick(rowData._id)}>Click</td>
+      <td style={{ color: rowData.bankAccount.refundState ? 'gray' : 'white' }}>{rowData._id}</td>
+      <td style={{ color: rowData.bankAccount.refundState ? 'gray' : 'white' }}>{rowData.user_id}</td>
+      <td style={{ color: rowData.bankAccount.refundState ? 'gray' : 'white' }}>{rowData.NameUser}</td>
+      <td style={{ color: rowData.bankAccount.refundState ? 'gray' : 'white' }}>{rowData.timestampCancel}</td>
+      <td style={{ color: rowData.bankAccount.refundState ? 'gray' : 'white' }}>{rowData.arrival}</td>
+      <td style={{ color: rowData.bankAccount.refundState ? 'gray' : 'white' }}>{rowData.drink_id}</td>
+      <td style={{
+    cursor: 'pointer',
+    color: '#9be4f9', // เปลี่ยนสีตัวอักษรตามที่ต้องการ
+    textDecoration: 'underline', // เพิ่ม underline เมื่อ hover
+  }} onClick={() => handleGoURL(index)}>Click</td>
     </tr>
   ))
 ) : (
@@ -72,7 +68,9 @@ function Cancellation() {
 )}
           </tbody>
         </table>
-      </div>
+      </div>):<div>
+        
+      </div>}
     </>
   );
 }
