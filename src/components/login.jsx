@@ -3,6 +3,8 @@ import "../assets/style/login.css";
 import { FcGoogle } from "react-icons/fc";
 import { API } from '../assets/api/authen';
 import { useCookies } from 'react-cookie';
+import { useNavigate } from "react-router-dom";
+import swalactive from "./swalfire";
 
 function Signin() {
   const [formData, setFormData] = useState({
@@ -15,7 +17,7 @@ function Signin() {
   const setToken = (tokenValue) => {
     setCookie('token', tokenValue, { path: '/' });
   };
-
+  const navigate = useNavigate();
   const handleSubmit = async (event) => {
     console.log({formData});
     event.preventDefault();
@@ -24,10 +26,13 @@ function Signin() {
         console.log('POST Response:', response.data);
         console.log("api",response.data.Token);
         setToken(response.data.Token);
-        console.log("cookie",cookies.token);
+
+        navigate("/");
+        swalactive('success','success to login');
       })
       .catch((error) => {
         console.error('POST Error:', error);
+        swalactive('error','fail to login');
       });
   };
 

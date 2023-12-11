@@ -46,7 +46,6 @@ function corousel() {
   };
   return (
     <div className="corousel">
-      {/* <button className="btn-corou" onClick={handleClickLeft}>ปุ่ม</button> */}
       <FiArrowLeftCircle className="btn-corou" onClick={handleClickLeft}/>
       <div className="box-corousel">
         <input

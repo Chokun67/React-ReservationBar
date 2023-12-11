@@ -44,22 +44,36 @@ function StatusAdmin() {
             </tr>
           </thead>
           <tbody>
-            {reservationData.map((rowData, index) => (
-              <tr key={index}>
-              <td>{rowData._id}</td>
-              <td>{rowData.a}</td>
-              <td>{rowData.nameUser}</td>
-              <td>{rowData.table_id}</td>
-              {/* <td>{rowData.gender}</td> */}
-              <td>{rowData.timestamp}</td>
-              <td>{rowData.arrival}</td>
-              <td>{rowData.drink_id}</td>
-              <td onClick={()=>handleGoURL(index)}
-              style={{color: rowData.status === 'waiting' ? 'yellow' : rowData.status === 'cancel-owner'|| rowData.status === 'cancel-customer'  ? 'red' :
-              rowData.status === 'confirm'  ? 'green' : 'inherit'}}>
-                {rowData.status}</td>
-              </tr>
-            ))}
+          {reservationData ? (
+  reservationData.map((rowData, index) => (
+    <tr key={index}>
+      <td>{rowData._id}</td>
+      <td>{rowData.a}</td>
+      <td>{rowData.nameUser}</td>
+      <td>{rowData.table_id}</td>
+      {/* <td>{rowData.gender}</td> */}
+      <td>{rowData.timestamp}</td>
+      <td>{rowData.arrival}</td>
+      <td>{rowData.drink_id}</td>
+      <td
+        onClick={() => handleGoURL(index)}
+        style={{
+          color:
+            rowData.status === 'waiting' ? 'yellow' :
+            rowData.status === 'cancel-owner' || rowData.status === 'cancel-customer' ? 'red' :
+            rowData.status === 'confirm' ? 'green' : 'inherit'
+        }}
+      >
+        {rowData.status}
+      </td>
+    </tr>
+  ))
+) : (
+  <tr>
+    <td colSpan="7">ไม่มีการจอง</td>
+  </tr>
+)}
+
           </tbody>
         </table>
       </div>

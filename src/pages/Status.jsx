@@ -3,27 +3,28 @@ import Navi from "../components/navi.jsx";
 import "../assets/style/status.css";
 import { useNavigate } from "react-router-dom";
 import { API } from "../assets/api/authen";
-import { useCookies } from 'react-cookie';
+import { useCookies } from "react-cookie";
 
 function Status() {
   const navigate = useNavigate();
-  const [cookies, setCookie, removeCookie] = useCookies(['token']);  
+  const [cookies, setCookie, removeCookie] = useCookies(["token"]);
   const [myReserve, setMyReserve] = useState([]);
   const handleGoURL = (idReser) => {
-    navigate(`/reserve/refund/${idReser}`);
+    navigate(`/reserve/status/detail/${idReser}`);
   };
 
   const handleGoBack = () => {
     navigate(-1); // ใช้ useNavigate เพื่อย้อนกลับไป URL ก่อนหน้า
   };
   useEffect(() => {
-    API.getMyReservation(cookies.token).then((response) => {
-      console.log('POST Response:', response.data);
-      setMyReserve(response.data);
-    })
-    .catch((error) => {
-      console.error('POST Error:', error);
-    });
+    API.getMyReservation(cookies.token)
+      .then((response) => {
+        console.log("POST Response:", response.data);
+        setMyReserve(response.data);
+      })
+      .catch((error) => {
+        console.error("POST Error:", error);
+      });
   }, []);
 
   return (
@@ -32,6 +33,7 @@ function Status() {
         <div className="firstpage">
           <Navi />
           <div className="boxcenter">
+            <h1>WELCOME</h1>
             <div className="status-box flex-column">
               <table>
                 <thead>
@@ -45,16 +47,24 @@ function Status() {
                   </tr>
                 </thead>
                 <tbody>
-                {myReserve.map((rowData, index) => (
-              <tr key={index}>
-              <td>{rowData._id}</td>
-              <td>{rowData.table_id}</td>
-              <td>1</td>
-              <td>{rowData.timestamp}</td>
-              <td>{rowData.arrival}</td>
-              <td onClick={()=>handleGoURL(rowData._id)}>{rowData.status}</td>
-              </tr>
-              ))}
+                  {myReserve ? (
+                    myReserve.map((rowData, index) => (
+                      <tr key={index}>
+                        <td>{rowData._id}</td>
+                        <td>{rowData.table_id}</td>
+                        <td>1</td>
+                        <td>{rowData.timestamp}</td>
+                        <td>{rowData.arrival}</td>
+                        <td onClick={() => handleGoURL(index)}>
+                          {rowData.status}
+                        </td>
+                      </tr>
+                    ))
+                  ) : (
+                    <tr>
+                      <td colSpan="6">ไม่มีการจอง</td>
+                    </tr>
+                  )}
                 </tbody>
               </table>
             </div>

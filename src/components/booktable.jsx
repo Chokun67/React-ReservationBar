@@ -6,15 +6,20 @@ import image3 from '../assets/image/image3.png';
 import Slide from '../components/bottomsheet.jsx';
 import { API } from '../assets/api/authen';
 import { useCookies } from 'react-cookie';
+import { useNavigate } from 'react-router-dom';
 
 function Table({ selectedDate }) {
-  const [prohibitBoxes, setProhibitBoxes] = useState([true,false,false,false,false,false,false,false,false])
   const [selectedBoxes, setSelectedBoxes] = useState(Array(10).fill(false));
   const [cookies, setCookie, removeCookie] = useCookies(['token']);
   const [testTable, settestTable] = useState([]);
   const [apiDataReady, setApiDataReady] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
+    if(cookies.token){
+      navigate("/login");
+      return
+    }
     if(!selectedDate.includes("undefined")){
       API.fetchTableData(cookies.token,selectedDate).then((response) => {
         console.log('POST Response:', response.data);
@@ -23,22 +28,24 @@ function Table({ selectedDate }) {
       })
       .catch((error) => {
         console.error('POST Error:', error);
+        // navigate("/login");
       });
     }
   }, [selectedDate]);
 
   const handleBoxClick = (boxIndex) => {
-    if (prohibitBoxes[boxIndex]) {
+    if (testTable[boxIndex].State) {
       return;
     }
-    const updatedBoxes = [...selectedBoxes];
-    updatedBoxes[boxIndex] = !updatedBoxes[boxIndex];
+    // const updatedBoxes = [...selectedBoxes];
+    // updatedBoxes[boxIndex] = !updatedBoxes[boxIndex];
+    // setSelectedBoxes(updatedBoxes);
+    const updatedBoxes = selectedBoxes.map((value, index) => (index === boxIndex ? !value : false));
     setSelectedBoxes(updatedBoxes);
   };
 
   const renderBoxes = () => {
     const boxes = [];
-
     for (let i = 0; i < 10; i++) {
       // const { State } = testTable[i];
       // const Prohibit = State;

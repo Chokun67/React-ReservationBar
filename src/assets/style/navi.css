@@ -90,6 +90,13 @@ header {
     display: flex;
     gap: 10px;
   }
+  nav .menunavi span {
+    height: 0.4rem;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 0.2rem;
+    transition: 0.4s;
+}
   nav .menunavi {
     display: none;
     position: absolute;
@@ -102,19 +109,18 @@ header {
     z-index: 11112;
   }
   .changebar .bar1 {
-    transform: translate(0, 11px) rotate(-45deg);
+    transform: translate(0, 13px) rotate(-45deg);
   }
   .changebar .bar2 {opacity: 0;}
   .changebar .bar3 {
-    transform: translate(0, -11px) rotate(45deg);
+    transform: translate(0, -13px) rotate(45deg);
+  }
+  .iconsignin{
+    font-size: 2rem;
+    color: white;
   }
 
-nav .menunavi span {
-    height: 0.4rem;
-    width: 100%;
-    background-color: #fff;
-    border-radius: 0.2rem;
-}
+
 @media screen and (max-width: 1000px){
     nav ul{
       display: none;

@@ -24,11 +24,16 @@
   p{
     font-size: 1rem;
   }
+  .service ul li{
+    font-family: 'Urbanist', sans-serif;
+    font-size: 18px;
+  }
 
-  @media screen and (max-width: 420px) {
+  @media screen and (max-width: 1000px) {
     .footer{
       flex-direction: column;
       height: 100%;
+      text-align: left;
     }
   }
   

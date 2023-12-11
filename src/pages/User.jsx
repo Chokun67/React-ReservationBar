@@ -35,6 +35,10 @@ function User() {
   const [cookies, setCookie, removeCookie] = useCookies(["token"]);
 
   useEffect(() => {
+    if(!cookies.token){
+      navigate("/login");
+      return
+    }
     API.fetchPersonaleData(cookies.token)
       .then((response) => {
         console.log("POST Response:", response.data);
@@ -51,9 +55,10 @@ function User() {
       })
       .catch((error) => {
         console.error("POST Error:", error);
+        navigate("/login");
       });
 
-      API.getMyReservation(cookies.token)
+    API.getMyReservation(cookies.token)
       .then((response) => {
         console.log("POST Response:", response.data);
         setMyReserve(response.data);
@@ -118,8 +123,13 @@ function User() {
                   History
                 </h2>
                 <ul>
-                  
-                  {myReserve.map((item, index) => (<li key={index}>{item.arrival}: 1 table</li>))}
+                  {myReserve ? (
+                    myReserve.map((item, index) => (
+                      <li key={index}>{item.arrival}: 1 table</li>
+                    ))
+                  ) : (
+                    <li>No reservations yet.</li>
+                  )}
                 </ul>
               </div>
             </div>

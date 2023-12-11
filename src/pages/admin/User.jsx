@@ -19,6 +19,13 @@ function UserDashboard() {
         console.error("POST Error:", error);
       });
   }, []);
+  const splitName = (fullName) => {
+    const nameArray = fullName.split(' ');
+    const middleIndex = Math.ceil(nameArray.length / 2);
+    const firstHalf = nameArray.slice(0, middleIndex).join(' ');
+    const secondHalf = nameArray.slice(middleIndex).join(' ');
+    return { firstHalf, secondHalf };
+  };
   return (
     <>
       <div className="full-screen-bg-music">
@@ -32,8 +39,8 @@ function UserDashboard() {
                     <thead>
                       <tr className="tr-admin">
                         <th>USER ID</th>
-                        <th>LASTNAME</th>
                         <th>FIRSTNAME</th>
+                        <th>LASTNAME</th>
                         <th>BIRTHDAY</th>
                         <th>GENDER</th>
                         <th>TEL.</th>
@@ -44,8 +51,8 @@ function UserDashboard() {
                     {userdata.map((rowData, index) => (
                      <tr key={index}>
                       <td>{rowData._id}</td>
-                      <td>{rowData.name}</td>
-                      <td>{rowData.name}</td>
+                      <td>{splitName(rowData.name).firstHalf}</td>
+                      <td>{splitName(rowData.name).secondHalf}</td>
                       <td>{rowData.birthday}</td>
                       <td>{rowData.gender}</td>
                       <td>{rowData.phone}</td>

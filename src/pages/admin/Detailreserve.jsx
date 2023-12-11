@@ -74,7 +74,7 @@ function DetailReserve() {
                   </div>
                   <div className="flex-part1">
                     <div className="pic-statement">
-                      <img src={`http://10.32.99.131:7000/image/${reservationData.statement}`} alt="คำอธิบายรูปภาพ" />
+                      <img src={`http://10.32.99.131:7000/image/${reservationData.statement}`} alt="รูปภาพการโอน" />
                     </div>
                   </div>
                 </div>

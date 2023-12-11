@@ -20,6 +20,7 @@ import UserDashboard from "./pages/admin/User.jsx";
 import DetailReserve from "./pages/admin/Detailreserve.jsx";
 import Cancel from "./pages/admin/Cancel.jsx";
 import Homeadmin from "./pages/admin/Homeadmin.jsx";
+import StatusDetail from "./pages/statusdetail.jsx";
 
 
 
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
   {
     path: "reserve/status",
     element: <Status />,
+  },
+  {
+    path: "reserve/status/detail/:id",
+    element: <StatusDetail />,
   },
   {
     path: "reserve/refund/:id",

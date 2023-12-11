@@ -7,6 +7,9 @@ import { BsMusicNote ,BsFillPersonFill} from "react-icons/bs";
 import headphone from "../assets/image/headphone.png";
 import { API } from '../assets/api/authen';
 import { useCookies } from 'react-cookie';
+import swalactive from "../components/swalfire.jsx";
+
+
 
 function Music() {
   const [formData, setFormData] = useState({
@@ -22,14 +25,33 @@ function Music() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    API.requestMusic(cookies.token,formData)
+    console.log(formData)
+    
+    API.requestMusic(cookies.token, formData)
+        .then((response) => {
+          console.log('POST Response:', response.data);
+          swalactive("success", "Request music success");
+        })
+        .catch((error) => {
+          console.error('POST Error:', error);
+          swalactive("error", "Request music error");
+        });
+  };
+
+  useEffect(() => {
+    if(cookies.token){
+      navigate("/login");
+      return
+    }
+    API.fetchPersonaleData(cookies.token)
       .then((response) => {
-        console.log('POST Response:', response.data);
+        
       })
       .catch((error) => {
-        console.error('POST Error:', error);
+        console.error("POST Error:", error);
+        // navigate("/login");
       });
-  };
+  }, []);
 
   return (
     <>
@@ -108,3 +130,19 @@ function Music() {
 }
 
 export default Music;
+
+// import jwt_decode from 'jwt-decode';
+
+// const token = cookies.token; 
+
+// if (token) {
+//   const decodedToken = jwt_decode(token);
+
+//   if (decodedToken && decodedToken.exp * 1000 > Date.now()) {
+//     // token ยังไม่หมดอายุ
+//   } else {
+//     // token หมดอายุหรือไม่ถูกต้อง
+//     // ทำการลบ cookies หรือทำการ logout ตามที่คุณต้องการ
+//     // removeCookie('token'); // ถ้าใช้ react-cookie
+//   }
+// }

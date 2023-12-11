@@ -45,7 +45,7 @@ function Cancellation() {
             <tr className="tr-admin">
               <th>RESERVATION ID</th>
               <th>USER ID</th>
-              <th>USERNAME</th>
+              <th>NAME</th>
               <th>CANCEL DATE</th>
               <th>RESERVE DATE</th>
               <th>LIQUOR</th>
@@ -53,17 +53,23 @@ function Cancellation() {
             </tr>
           </thead>
           <tbody>
-            {canceldata.map((rowData, index) => (
-            <tr key={index}>
-              <td>{rowData._id}</td>
-              <td>{rowData.user_id}</td>
-              <td>{rowData.name_song}</td>
-              <td>{rowData.message}</td>
-              <td>{rowData.arrival}</td>
-              <td>{rowData.drink_id}</td>
-              <td onClick={()=>handleclick(rowData._id)}>Click</td>
-            </tr>
-            ))}
+          {canceldata ? (
+  canceldata.map((rowData, index) => (
+    <tr key={index}>
+      <td>{rowData._id}</td>
+      <td>{rowData.user_id}</td>
+      <td>{rowData.NameUser}</td>
+      <td>{rowData.message}</td>
+      <td>{rowData.arrival}</td>
+      <td>{rowData.drink_id}</td>
+      <td onClick={() => handleclick(rowData._id)}>Click</td>
+    </tr>
+  ))
+) : (
+  <tr>
+    <td colSpan="7">ไม่มีการจอง</td>
+  </tr>
+)}
           </tbody>
         </table>
       </div>

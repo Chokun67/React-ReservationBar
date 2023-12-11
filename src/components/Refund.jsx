@@ -4,6 +4,7 @@ import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 import { useNavigate ,useParams} from "react-router-dom";
 import { API } from '../assets/api/authen';
 import { useCookies } from 'react-cookie';
+import swalactive from "./swalfire.jsx";
 
 function Refund() {
   const [cookies, setCookie, removeCookie] = useCookies(['token']);
@@ -28,7 +29,8 @@ function Refund() {
     API.user_refund(cookies.token,refundData)
       .then((response) => {
         console.log("POST Resrvation:", response.data);
-        navigate(-1);
+        navigate(`/reserve`);
+        swalactive("success","cancel reservation success")
       })
       .catch((error) => {
         console.error("POST Error:", error);
@@ -71,7 +73,7 @@ function Refund() {
               </div>
             </div>
             <div className="flex-row">
-              <button className="right-border-button">
+              <button className="right-border-button" onClick={handleGoBack}>
                 <AiOutlineArrowLeft /> Back
               </button>
               <button className="left-border-button" onClick={handleSubmit}>Confirm</button>

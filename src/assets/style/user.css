@@ -81,6 +81,30 @@
 .name-container{
   text-align: left;
 }
+.picuser-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.edit-form .bottom{
+  margin-top: 40px;
+}
+.profilepic2 img {
+  width: 100%;
+  position: relative; /* เพิ่ม */
+  
+  z-index: 1; /* ให้รูป logo อยู่ด้านหน้า */
+}
+.profilepic2 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  max-width: 120px;
+  min-width: 60px;
+}
+
+
 
   
 

@@ -15,13 +15,14 @@ function Reserve() {
     const options = [];
     for (let i = 0; i < 3; i++) {
       const date = new Date(startDate);
-      date.setDate(startDate.getDate() + i);
-      const formattedDate = date.toLocaleDateString("en-US", {
-        year: "numeric",
-        month: "2-digit",
-        day: "2-digit",
-      });
-      options.push(formattedDate);
+  date.setDate(startDate.getDate() + i);
+
+  const year = date.getFullYear();
+  const month = (date.getMonth() + 1).toString().padStart(2, '0');
+  const day = date.getDate().toString().padStart(2, '0');
+
+  const formattedDate = `${year}/${month}/${day}`;
+  options.push(formattedDate);
     }
     setDateOptions(options);
     setSelectedDate(options[0]); // เลือกวันที่แรกเป็นค่าเริ่มต้น
@@ -36,9 +37,9 @@ function Reserve() {
 }
 
 function formatDateString(dateString) {
-    const [month, day, year] = dateString.split('/');
-    const formattedDate = `${year}-${customPadStart(month, 2, '0')}-${customPadStart(day, 2, '0')}`;
-    return formattedDate;
+  const [year, month, day] = dateString.split('/');
+  const formattedDate = `${year}-${customPadStart(month, 2, '0')}-${customPadStart(day, 2, '0')}`;
+  return formattedDate;
 }
 
   const navigate = useNavigate();

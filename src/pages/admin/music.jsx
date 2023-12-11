@@ -43,7 +43,7 @@ function MusicDashboard() {
                       </tr>
                     </thead>
                     <tbody>
-                      {quece.map((rowData, index) => (
+                    {quece?(quece.map((rowData, index) => (
                      <tr key={index}>
                       <td>{rowData.user_id}</td>
                       <td>{rowData.user_id}</td>
@@ -51,7 +51,11 @@ function MusicDashboard() {
                       <td>{rowData.message}</td>
                       <td>{rowData.url}</td>
                       </tr>
-                      ))}
+                      ))):(
+                        <tr>
+                          <td colSpan="5">ไม่มีเพลงที่ถูก request</td>
+                        </tr>
+                      )}
                     </tbody>
                   </table>
                 </div>

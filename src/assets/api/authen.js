@@ -29,7 +29,7 @@ export const API = {
     });
   },
 
-  user_updateinfo: (data,token) => {
+  user_updateinfo: (token,data) => {
     const apiUrl = `${API_URL}/secret/member/update-personal-infor`;
     const headers = {
       "Content-Type": "application/json",
@@ -57,7 +57,6 @@ export const API = {
     formData.append('drink_id', drinkId);
     formData.append('table_id', tableId);
     formData.append('arrival', arrivalDate);
-    print(arrivalDate);
     const config = {
       headers: {
         'Authorization': `Bearer ${token}`, // เปลี่ยนเป็นโทเคนที่ถูกอนุญาตให้เข้าถึง API ของคุณ
@@ -105,7 +104,7 @@ export const API = {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     };
-    return axios.put(apiUrl, data, { headers });
+    return axios.post(apiUrl, data, { headers });
   },
   
 

@@ -24,12 +24,12 @@ function BottomSheet( props ) {
       <div className="bottom-sheet-content">
         <div className="flex-betweencenter">
           <div className="">
-            <p>{formattedDate}</p>
+            <p>{props.selectedDate}</p>
             <div className="slidebottom">
               <p>Table:</p>
               {props.selectedBoxes.map(
-                (_, index) =>
-                  <p key={index}>{index + 1}, </p>
+                (selectedBoxes, index) =>
+                  <p key={index}>{selectedBoxes[index]} </p>
               )}
             </div>
           </div>

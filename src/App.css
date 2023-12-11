@@ -1,4 +1,6 @@
-
+.background-blue{
+  background-color: #11062F;
+}
 /* Background.css */
 .full-screen-bg {
   display: flex;
@@ -9,6 +11,7 @@
   background-size: cover;
   background-position: center;
   margin-left: -17px;
+  border-bottom-left-radius: 20%;
 }
 
 .firstpage {
@@ -42,8 +45,8 @@
 .storepic {
   display: flex;
   align-items: center;
-  max-width: 90%; /* ให้ .storepic ไม่เกินความกว้างสูงสุดของพื้นที่ที่ตั้ง */
-  overflow: hidden; /* ให้ซ่อนส่วนที่เกินของรูปภาพ */
+  max-width: 90%; 
+  overflow: hidden; 
 }
 
 .storepic img {
@@ -85,7 +88,8 @@
   justify-content: space-between; /* แบ่งส่วนแบบ space-between เพื่อให้ซ้าย 30% และขวา 70% */
   position: relative;
   height: 710px; /* ให้สูงเท่ากับความสูงของหน้าจอ */
-  background-image: linear-gradient(to top right,#09133B 30%,#a53fa5 ,#fa43f9 );
+  /* background-image: linear-gradient(to top right,#09133B 30%,#a53fa5 ,#fa43f9 ); */
+  background-color: #11062F;
 }
 
 .left-pane {
@@ -108,6 +112,8 @@
 
 .right-pane {
   width: 70%;
+  display: flex;
+  align-items: center;
 }
 
 /* responsive design */
@@ -120,6 +126,9 @@
     background-image: url('assets/image/mainbg2.png');
     background-size: cover;
     background-position: center;
+    border-bottom-left-radius: 20%;
+    border-bottom-right-radius: 20%;
+    margin:0;
   }
 
   .boxcover{
@@ -132,7 +141,7 @@
     max-width: 100%; /* ให้ .storepic ไม่เกินความกว้างสูงสุดของพื้นที่ที่ตั้ง */
     height: 100%;
     overflow: hidden; /* ให้ซ่อนส่วนที่เกินของรูปภาพ */
-    margin-top: 40px;
+    margin-top: 10px;
   }
   
   .storepic img {
@@ -142,12 +151,13 @@
   }
   .content2{
     width: 100%;
+    text-align: center;
   }
   .content2 h1{
-    font-size: 3rem;
+    font-size: 3.2rem;
   }
   .welcome{
-    width: 90%;
+    width: 60%;
   }
   .pane2{
     flex-direction: column;

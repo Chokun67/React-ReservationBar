@@ -13,6 +13,7 @@ function Home() {
   };
   return (
     <>
+      <div className="backgroundblue">
       <div className="full-screen-bg">
         <div className="firstpage">
           <Navi />
@@ -29,6 +30,7 @@ function Home() {
             </div>
           </div>
         </div>
+      </div>
       </div>
       <div className="pane2">
         <div className="left-pane">

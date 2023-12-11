@@ -5,14 +5,17 @@ import Corousel from "../components/corousel";
 import Footer from "../components/footer";
 import logomain from "../assets/image/pic.png";
 import { useCookies } from 'react-cookie';
+import { useNavigate } from "react-router-dom";
 
 function Home() {
   const [cookies, setCookie, removeCookie] = useCookies(['token']);
   const printtoken = () => {
     console.log(cookies.token);
   };
+  const navigate = useNavigate();
   return (
     <>
+      <div className="background-blue">
       <div className="full-screen-bg">
         <div className="firstpage">
           <Navi />
@@ -26,27 +29,28 @@ function Home() {
               <div className="content2">
                 <h1>WELCOME</h1>
                 <p>
-                  ร็อคพลาซ่า คอมเมนต์ดั๊มพ์โอเลี้ยงสตาร์ท แอ็คชั่นฮีโร่จ๊อกกี้
-                  แอร์นินจาแทงกั๊กคอนโทรล ออกแบบคาร์โก้สมิติเวชป๋า
-                  มินต์บ๊อบสะบึมส์ บูติกดีเจบร็อกโคลีแก๊สโซฮอล์จตุคาม แอปเปิ้ล
-                  ฟอยล์ทาวน์ มอนสเตอร์เอ๊าะแต๋ว คองเกรสฮัลโลวีนอพาร์ทเมนท์สเตย์
-                  ทำงานแฟร์ไรเฟิลภารตะเซ่นไหว้ กฤษณ์บึ้มเก๋ากี้รันเวย์
-                  ธรรมาแคร์แทงโก้อุด้งพลานุภาพ ฟินิกซ์แฟกซ์
-                  แพลนแครกเกอร์ซูเอี๋ยภคันทลาพาธ
+                Welcome to Laorian, where vibrant ambiance meets exceptional service, 
+                creating an unforgettable experience for every patron. Our website provides a seamless 
+                platform for you to reserve the perfect table for your evening, ensuring you have the best seat in the house. 
+                Join us at Laorian, where reservations and music preferences come together to elevate your night out. Cheers to good times 
+                and great vibes!
                 </p>
               </div>
             </div>
           </div>
         </div>
       </div>
+      </div>
       <div className="pane2">
         <div className="left-pane">
           <h1>FEATURES</h1>
           <p>Reservation for tables <br/>Request for music</p>
-          <button onClick={printtoken}>test1</button>
         </div>
-        <div className="right-pane">
+        <div className="right-pane flex-column-center">
           <Corousel />
+          <button type="submit" className="date-button" onClick={()=>navigate("/reserve")}>
+            Rerservation
+          </button>
         </div>
       </div>
       <Footer />
